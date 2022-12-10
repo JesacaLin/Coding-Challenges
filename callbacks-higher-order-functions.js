@@ -1,6 +1,6 @@
-LOOK; //ALL CSX Callbacks & Higher-order Functions challenges will go here
+//ALL CSX Callbacks & Higher-order Functions challenges will go here
 
-//Challenge: pluralize
+LOOK; //Challenge: pluralize
 /*Create a function pluralize that takes an array of strings as input and returns a new array with an "s" added to the end of each string in the input array. For example, if the string "carrot" is in the input array, it should become the string "carrots" in the output array.
 
 The body of the pluralize function should employ a single for loop that pluralizes each string in the input array. */
@@ -23,18 +23,50 @@ function pluralize(arr) {
 const animals = ["dog", "cat", "tree frog"];
 console.log(pluralize(animals)); // should log: ["dogs", "cats", "tree frogs"]
 
-//CHALLENGE: Map
+LOOK; //CHALLENGE: map
+/*Create a function subtractTwo that accepts a number and returns that number minus 2.
 
-//CHALLENGE: Map #2
+Then create a function map that takes two inputs -
 
-//CHALLENGE: forEach
+an array of numbers (a list of numbers)
+a 'callback' function - this function is applied to each element of the array (inside of the function 'map')
+Have your map function return a new array filled with numbers that are the result of using the 'callback' function on each element of the input array. Please do not use the native map or forEach method.*/
 
-//CHALLENGE: filterArray
+//input: numbers
+//output: new array
 
-//CHALLENGE:
+//declare a helper function subtractTwo with parameter of num.
+//the function will take num and return the number - 2.
+function subtractTwo(num) {
+  return num - 2;
+}
 
-//CHALLENGE:
+//declare a function call map with two parameters: array, callback function
+//return new array
+function map(array, callback) {
+  //declare a new array to hold new variables
+  const newArray = [];
+  //Use a for loop to invoke the callback on each element.
+  for (let i = 0; i < array.length; i++) {
+    newArray.push(callback(array[i]));
+  }
+  return newArray;
+}
 
-//CHALLENGE:
+console.log(typeof subtractTwo); // should log: 'function'
+console.log(typeof map); // should log: 'function'
+console.log(map([3, 4, 5], subtractTwo)); // should log: [ 1, 2, 3 ]
 
-//CHALLENGE:
+LOOK; //CHALLENGE: Map #2
+
+LOOK; //CHALLENGE: forEach
+
+LOOK; //CHALLENGE: filterArray
+
+LOOK; //CHALLENGE:
+
+LOOK; //CHALLENGE:
+
+LOOK; //CHALLENGE:
+
+LOOK; //CHALLENGE:
