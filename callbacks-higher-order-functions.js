@@ -171,7 +171,24 @@ console.log(filterArray(arrOfNums, intSqRtOrOver100)); // should log: [105, 9]
 
 //In this implementation, the eitherCallback() function takes two callback functions as arguments and returns a new callback function that combines the behavior of the two input functions. The new callback function returns a truthy value if either of the input callback functions returns a truthy value
 
-LOOK; //CHALLENGE:
+LOOK; //CHALLENGE: reduce
+//Construct your own reduce function that accepts an array, a callback, and an initial value and returns a single value.
+
+// ADD CODE HERE
+const reduce = (array, callback, initValue) => {
+  let accumulation = initValue;
+  for (let i = 0; i < array.length; i++) {
+    accumulation = callback(accumulation, array[i]);
+  }
+  return accumulation;
+};
+
+// Uncomment these to check your work!
+const nums = [4, 1, 3];
+const add = function (a, b) {
+  return a + b;
+};
+console.log(reduce(nums, add, 0)); // should log 8
 
 LOOK; //CHALLENGE:
 
