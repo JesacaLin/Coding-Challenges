@@ -57,7 +57,47 @@ console.log(typeof subtractTwo); // should log: 'function'
 console.log(typeof map); // should log: 'function'
 console.log(map([3, 4, 5], subtractTwo)); // should log: [ 1, 2, 3 ]
 
-LOOK; //CHALLENGE: Map #2
+LOOK; //CHALLENGE: forEach
+/*Part 1
+Create a function forEach which takes an array and a callback, and runs the callback on each element of the array. forEach does not return anything. Please do not use the native forEach or map method.
+
+let alphabet = '';
+const letters = ['a', 'b', 'c', 'd'];
+forEach(letters, function(char) {
+  alphabet += char;
+});
+console.log(alphabet); //prints 'abcd'
+Part 2
+Now let's rebuild map from the previous challenge. This time instead of using a for loop, you're going to use the forEach we just created.*/
+
+// input: array and callback
+// output: new array
+
+//declare function forEach with array and callback as parameters
+const forEach = (array, callback) => {
+  //utlize a loop to run the callback on each element of array.
+  let i = 0;
+  while (i < array.length) {
+    callback(array[i]);
+    i++;
+  }
+};
+
+function map(array, callback) {
+  //declare a new array to hold new variables
+  const newArray = [];
+  //Use forEach method to invoke the callback on each element.
+  array.forEach((element) => {
+    newArray.push(callback(element));
+  });
+  return newArray;
+}
+
+// Uncomment these to check your work!
+console.log(typeof forEach); // should log: 'function'
+forEach(["a", "b", "c"], (i) => console.log(i)); // should log: 'a', 'b', 'c'
+console.log(typeof map); // should log: 'function'
+console.log(map([3, 4, 5], (n) => n - 2)); // should log: [1, 2, 3]
 
 LOOK; //CHALLENGE: forEach
 
