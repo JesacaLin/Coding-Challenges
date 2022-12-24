@@ -92,6 +92,41 @@ console.log(abbreviate("wonderful")); // 'wndrfl'
 console.log(abbreviate("mystery")); // 'mystry'
 console.log(abbreviate("Accordian"));
 
-//LOOK --
+//LOOK --Uncompress
+// Write a function uncompress(str) that takes in a "compressed" string as an arg. A compressed string consists of a character immediately followed by the number of times it appears in the "uncompressed" form. The function should return the uncompressed version of the string. See the examples.
+
+// Hint: you can use the built-in Number function should convert a numeric string into the number type. For example. Number("4") // => 4
+
+// You may assume that the number of times will always be an integer between 0 and 9.
+
+//input: conpressed string;
+//output: uncompressed string;
+//create an empty string to story changed string;
+//create a loop to iterate through the string;
+//create a variable to start the starting character on first iteration.
+//create a variable to convert the 1st index into a number;
+//return joined array;
+const uncompress = (str) => {
+  let result = "";
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    let num = Number(str[i + 1]);
+
+    if (isNan(num)) {
+      //num is not a number, so skip this iteration;
+      continue;
+    }
+
+    for (let j = 0; j < num; j++) {
+      result += char;
+    }
+  }
+  return result;
+};
+
+console.log(uncompress("x3y4z2")); // 'xxxyyyyzz'
+console.log(uncompress("a5b2c4z1")); // 'aaaaabbccccz'
+console.log(uncompress("b1o2t1")); // 'boot'
 
 //LOOK --
