@@ -65,7 +65,32 @@ console.log(pigLatinWord("eat")); //=> "eatyay"
 console.log(pigLatinWord("banana")); //=> "ananabay"
 console.log(pigLatinWord("trash")); //=> "ashtray"
 
-//LOOK --
+//LOOK -- Abbreviate
+// Write a function abbreviate(word) that takes in a string arg. The function should return a new string where all of its vowels are removed.
+
+//input: string;
+//output: new string;
+//declare a vowels string;
+//declare empty array;
+//loop through word and if element is not included in vowels, push the word to new array.
+
+const abbreviate = (word) => {
+  let arr = [];
+  const vowels = "aeiou".toLowerCase();
+  word = word.toLowerCase();
+  let i = 0;
+  while (i < word.length) {
+    if (!vowels.includes(word[i])) {
+      arr.push(word[i]);
+    }
+    i++;
+  }
+  return arr.join("");
+};
+
+console.log(abbreviate("wonderful")); // 'wndrfl'
+console.log(abbreviate("mystery")); // 'mystry'
+console.log(abbreviate("Accordian"));
 
 //LOOK --
 
