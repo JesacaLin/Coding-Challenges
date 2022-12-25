@@ -216,6 +216,30 @@ console.log(moreDotLessDash(".... . -.--")); // true
 console.log(moreDotLessDash(".--. .-. --- --. .-. .- -- -- . .-.")); // false
 console.log(moreDotLessDash("high-flying acrobat.")); // false
 
-//LOOK --
+//LOOK --Has Three Vowels
+// Write a function hasThreeVowels that accepts a string as an argument. The function should return a boolean indicating whether or not the string contains at least three different vowels.
+
+// input: string
+// output: boolean
+//create a string of vowels
+//make sure string is lowercase
+//create new set to store unique values
+//initalize a loop of the string.
+    //if vowels exist in the string, add to a new set.
+//if set size is more than three, return true.
+function hasThreeVowels(str){
+    str = str.toLowerCase();
+    const vowels = 'aeiou';
+    let set1 = new Set();
+    
+    if (str.length < 3) return false;
+    
+    for (let i = 0; i < str.length; i++){
+        if(vowels.includes(str[i])){
+            set1.add(str[i])
+        }
+    }
+    if (set1.size > 2) return true;
+    return false;
 
 //LOOK --
