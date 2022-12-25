@@ -242,4 +242,26 @@ function hasThreeVowels(str){
     if (set1.size > 2) return true;
     return false;
 
-//LOOK --
+//LOOK --Last Index
+// Write a function lastIndex that takes in a string and a character. The function should return the last index where the character can be found in the string.
+
+
+//input: str and character
+// output: last index where the character can be found.
+// loop thorugh each string and push the index to an array.
+//return the last index of the array.
+//or just loop backwards and grab the first instance of the char that way and return the index.
+function lastIndex(str, char) {
+    let indexArr = [];
+    for (let i = 0; i < str.length; i++){
+        if(str[i].includes(char)){
+            indexArr.push(i)
+        }
+    }
+    return indexArr[indexArr.length-1]
+}
+
+console.log(lastIndex("abca", "a"))        // 3
+console.log(lastIndex("mississipi", "i"))  // 9
+console.log(lastIndex("octagon", "o"))     // 5
+console.log(lastIndex("programming", "m")) // 7
