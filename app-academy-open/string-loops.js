@@ -186,7 +186,35 @@ console.log(sillyString("cats")); // cabats
 console.log(sillyString("italy")); // ibitabaly
 console.log(sillyString("scooter")); // scobooboteber
 
-//LOOK --
+//LOOK --More Dot Less Dash
+// Write a function moreDotLessDash that accepts a string as an argument. The function should return a boolean indicating whether or not the string contains more dots (.) than dashes (-).
+
+//input: string
+//output: boolean
+//create counters for dot and dash variables
+//loop through the elements and count each instance of dot or dash
+//compare the two variables
+//return result
+function moreDotLessDash(str) {
+  let dot = 0;
+  let dash = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i].includes(".")) {
+      dot++;
+    }
+
+    if (str[i].includes("-")) {
+      dash++;
+    }
+  }
+  return dot > dash;
+}
+
+console.log(moreDotLessDash("2-D arrays are fun. I think.")); // true
+console.log(moreDotLessDash("Morse code is great.")); // true
+console.log(moreDotLessDash(".... . -.--")); // true
+console.log(moreDotLessDash(".--. .-. --- --. .-. .- -- -- . .-.")); // false
+console.log(moreDotLessDash("high-flying acrobat.")); // false
 
 //LOOK --
 
