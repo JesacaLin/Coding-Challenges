@@ -225,26 +225,26 @@ console.log(moreDotLessDash("high-flying acrobat.")); // false
 //make sure string is lowercase
 //create new set to store unique values
 //initalize a loop of the string.
-    //if vowels exist in the string, add to a new set.
+//if vowels exist in the string, add to a new set.
 //if set size is more than three, return true.
-function hasThreeVowels(str){
-    str = str.toLowerCase();
-    const vowels = 'aeiou';
-    let set1 = new Set();
-    
-    if (str.length < 3) return false;
-    
-    for (let i = 0; i < str.length; i++){
-        if(vowels.includes(str[i])){
-            set1.add(str[i])
-        }
+function hasThreeVowels(str) {
+  str = str.toLowerCase();
+  const vowels = "aeiou";
+  let set1 = new Set();
+
+  if (str.length < 3) return false;
+
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i])) {
+      set1.add(str[i]);
     }
-    if (set1.size > 2) return true;
-    return false;
+  }
+  if (set1.size > 2) return true;
+  return false;
+}
 
 //LOOK --Last Index
 // Write a function lastIndex that takes in a string and a character. The function should return the last index where the character can be found in the string.
-
 
 //input: str and character
 // output: last index where the character can be found.
@@ -252,16 +252,46 @@ function hasThreeVowels(str){
 //return the last index of the array.
 //or just loop backwards and grab the first instance of the char that way and return the index.
 function lastIndex(str, char) {
-    let indexArr = [];
-    for (let i = 0; i < str.length; i++){
-        if(str[i].includes(char)){
-            indexArr.push(i)
-        }
+  let indexArr = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i].includes(char)) {
+      indexArr.push(i);
     }
-    return indexArr[indexArr.length-1]
+  }
+  return indexArr[indexArr.length - 1];
 }
 
-console.log(lastIndex("abca", "a"))        // 3
-console.log(lastIndex("mississipi", "i"))  // 9
-console.log(lastIndex("octagon", "o"))     // 5
-console.log(lastIndex("programming", "m")) // 7
+console.log(lastIndex("abca", "a")); // 3
+console.log(lastIndex("mississipi", "i")); // 9
+console.log(lastIndex("octagon", "o")); // 5
+console.log(lastIndex("programming", "m")); // 7
+
+//LOOK --Double Letter Count
+//Write a function doubleLetterCount that takes in a string and returns the number of times that the same letter repeats twice in a row.
+
+//input: string
+//output: number
+//set up counter
+//loop through and compare characters at current index and the one next to it.
+function doubleLetterCount(string) {
+  let counter = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] === string[i + 1]) {
+      counter++;
+    }
+  }
+  return counter;
+}
+
+console.log(doubleLetterCount("the jeep rolled down the hill")); // 3
+console.log(doubleLetterCount("bootcamp")); // 1
+
+//LOOK --
+
+//LOOK --
+
+//LOOK --
+
+//LOOK --
+
+//LOOK --
