@@ -113,7 +113,7 @@ const uncompress = (str) => {
     let char = str[i];
     let num = Number(str[i + 1]);
 
-    if (isNan(num)) {
+    if (isNaN(num)) {
       //num is not a number, so skip this iteration;
       continue;
     }
@@ -128,5 +128,35 @@ const uncompress = (str) => {
 console.log(uncompress("x3y4z2")); // 'xxxyyyyzz'
 console.log(uncompress("a5b2c4z1")); // 'aaaaabbccccz'
 console.log(uncompress("b1o2t1")); // 'boot'
+
+//LOOK --Triplet True
+// Write a function tripletTrue that accepts a string as an argument. The function should return a boolean indicating whether or not the the string contains three of the same character consecutively.
+// input: string
+// output: boolean
+// iterate through the string
+//compare if value at an index is the same as the other ones.
+//return boolean.
+const tripletTrue = function (str) {
+  for (let i = 0; i < str.length; i++) {
+    if (str.length < 3) return false;
+
+    if (str[i] == str[i + 1] && str[i + 1] == str[i + 2]) {
+      return true;
+    }
+  }
+  return false;
+};
+
+console.log(tripletTrue("caaabb")); // true
+console.log(tripletTrue("terrrrrible")); // true
+console.log(tripletTrue("runninggg")); // true
+console.log(tripletTrue("bootcamp")); // false
+console.log(tripletTrue("e")); // false
+
+//LOOK --
+
+//LOOK --
+
+//LOOK --
 
 //LOOK --
