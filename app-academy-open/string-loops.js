@@ -153,7 +153,38 @@ console.log(tripletTrue("runninggg")); // true
 console.log(tripletTrue("bootcamp")); // false
 console.log(tripletTrue("e")); // false
 
-//LOOK --
+//LOOK --Silly Strings
+// Write a function sillyString that accepts a word as an argument. The functions should return a new word where every vowel of the original word is followed by 'b' and that same vowel. For example, 'siren' would turn into 'sibireben'.
+
+//input: string
+//output: altered string
+//create empty string to hold the altered string
+//create a string of vowels
+//iterate through the word
+//if word includes a vowel, add letter b and the vowel
+//return string
+
+function sillyString(word) {
+  let newString = "";
+  let vowels = "aeiou";
+  let i = 0;
+  while (i < word.length) {
+    if (vowels.includes(word[i])) {
+      newString += `${word[i]}b${word[i]}`; // fix missing quotation mark
+    } else {
+      newString += `${word[i]}`; // update newString on each iteration
+    }
+    i++;
+  }
+  return newString;
+}
+
+console.log(sillyString("stop")); // stobop
+console.log(sillyString("that")); // thabat
+console.log(sillyString("can")); // caban
+console.log(sillyString("cats")); // cabats
+console.log(sillyString("italy")); // ibitabaly
+console.log(sillyString("scooter")); // scobooboteber
 
 //LOOK --
 
