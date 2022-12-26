@@ -286,7 +286,51 @@ function doubleLetterCount(string) {
 console.log(doubleLetterCount("the jeep rolled down the hill")); // 3
 console.log(doubleLetterCount("bootcamp")); // 1
 
-//LOOK --
+//LOOK --Caesar Cipher
+// Write a method caesarCipher that takes in a string and a number. The function should return a new string where every character of the original is shifted num characters in the alphabet.
+
+// Feel free to use this variable:
+//input string, num
+//output: new string
+//loop through string
+//variable to hold new string
+//variable to hold current char
+//establish inner loop to compare elements
+//when current char is found, increase the index by num.
+//return the string
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+function caesarCipher(string, num) {
+  // Initialize an empty string to store the modified characters
+  let newString = "";
+
+  // Iterate over each character in the input string
+  for (let i = 0; i < string.length; i++) {
+    // Store the current character in a variable
+    let currentChar = string[i];
+
+    // Find the index of the current character in the alphabet string
+    let charIndex = alphabet.indexOf(currentChar);
+
+    // Calculate the index of the shifted character in the alphabet string
+    let newIndex = (charIndex + num) % alphabet.length;
+
+    // If the shift resulted in a negative index, add the length of the alphabet string to wrap around to the beginning
+    if (newIndex < 0) newIndex += alphabet.length;
+
+    // Get the character at the new index in the alphabet string
+    let nextChar = alphabet[newIndex];
+
+    // Add the shifted character to the new string
+    newString += nextChar;
+  }
+
+  // Return the modified string
+  return newString;
+}
+
+console.log(caesarCipher("apple", 1)); // "bqqmf"
+console.log(caesarCipher("bootcamp", 2)); // "dqqvecor"
+console.log(caesarCipher("zebra", 4)); // "difve"
 
 //LOOK --
 
