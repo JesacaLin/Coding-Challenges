@@ -332,10 +332,40 @@ console.log(caesarCipher("apple", 1)); // "bqqmf"
 console.log(caesarCipher("bootcamp", 2)); // "dqqvecor"
 console.log(caesarCipher("zebra", 4)); // "difve"
 
-//LOOK --
+//LOOK -- Vowel Cipher
+// Write a function vowelCipher that takes in a string and returns a new string where every vowel becomes the next vowel in the alphabet.
 
-//LOOK --
+//input: string;
+//output: mutated string;
 
-//LOOK --
+//iterate through string
+//variable to store new string
+//use includes method
+//if matching vowels are encountered, replace with next indext in the vowels string.
+//set up an index to hold vowel index, this is really just so you can have a
+//condition to catch the edge case, what comes after u?
+//if vowel is u, return an a
+//if not, return the element
+//if element is not a vowel, return it as is.
+//return new string;
+function vowelCipher(string) {
+  const vowels = "aeiou";
+  let newString = "";
+  for (let i = 0; i < string.length; i++) {
+    let currentChar = string[i];
+    if (vowels.includes(currentChar)) {
+      let index = vowels.indexOf(currentChar);
+      if (index === 4) {
+        newString += "a";
+      } else {
+        newString += vowels[index + 1];
+      }
+    } else {
+      newString += currentChar;
+    }
+  }
+  return newString;
+}
 
-//LOOK --
+console.log(vowelCipher("bootcamp")); // "buutcemp"
+console.log(vowelCipher("paper cup")); // "pepir cap"
