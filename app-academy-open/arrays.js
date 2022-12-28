@@ -103,8 +103,11 @@ console.log(threeIncreasing([1, 2, 4, 5, 2, 7, 8])); // false
 //return true/false
 
 const myIncludes = (arr, target) => {
-  if (arr.includes(target)) {
-    return true;
+  for (let i = 0; i < arr.length; i++) {
+    let currentNum = arr[i];
+    if (currentNum === target) {
+      return true;
+    }
   }
   return false;
 };
@@ -114,3 +117,29 @@ console.log(myIncludes(["a", "b", "c", "e"], "a")); // true
 console.log(myIncludes(["a", "b", "c", "e"], "z")); // false
 console.log(myIncludes([43, -7, 11, 13], 11)); // true
 console.log(myIncludes([43, -7, 11, 13], 1)); // false
+
+//LOOK -->My Index Of
+// Write a function myIndexOf(arr, target) that takes in an array and target value as args. The function should return the first index where the target is found in the array. If the target is not found, it should return -1. Solve this without using Array.indexOf.
+
+//input: arr, num
+//ouput: index
+//find first index when target is found
+//iterate through arr
+//if a match is found, return the index
+//break out of the loop
+
+function myIndexOf(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    let currentEl = arr[i];
+    if (currentEl === target) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+console.log(myIndexOf(["a", "b", "c", "e"], "c")); // 2
+console.log(myIndexOf(["a", "b", "c", "e"], "e")); // 3
+console.log(myIndexOf(["a", "b", "c", "e"], "z")); // -1
+console.log(myIndexOf([43, -7, 11, 13, 43], 43)); // 0
+console.log(myIndexOf([43, -7, 11, 13], 1)); // -1
