@@ -143,3 +143,46 @@ console.log(myIndexOf(["a", "b", "c", "e"], "e")); // 3
 console.log(myIndexOf(["a", "b", "c", "e"], "z")); // -1
 console.log(myIndexOf([43, -7, 11, 13, 43], 43)); // 0
 console.log(myIndexOf([43, -7, 11, 13], 1)); // -1
+
+//LOOK -->Sum Array
+//Write a function sumArray(array) that takes in an array of numbers and returns the total sum of all the numbers.
+
+//input: array
+//ouput: integer
+//declare a variable to store the ongoing value;
+//iterate through the array and add the values;
+//return the sum
+
+function sumArray(array) {
+  // let totalSum = 0;
+  // for (let i = 0; i < array.length; i++){
+  //     totalSum += array[i]
+  // }
+  // return totalSum;
+
+  return array.reduce(function (acc, currentIndex) {
+    return acc + currentIndex;
+  });
+}
+
+console.log(sumArray([5, 6, 4])); // => 15
+console.log(sumArray([7, 3, 9, 11])); // => 30
+
+//LOOK -->Product Array
+// Write a function productWithReduce(nums) that takes in an array of numbers. The function should return the total product of multiplying all numbers of the array together. You can assume that nums will not be an empty array.
+
+//input: nums
+//output: number
+//return product of all elements
+//iterate through the array
+
+function productWithReduce(nums) {
+  return nums.reduce(function (acc, currentVal) {
+    return (acc *= currentVal);
+  });
+}
+
+console.log(productWithReduce([10, 3, 5, 2])); // 300
+console.log(productWithReduce([4, 3])); // 12
+
+//LOOK -->
