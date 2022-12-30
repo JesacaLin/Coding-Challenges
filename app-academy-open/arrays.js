@@ -209,3 +209,138 @@ function doubler(numbers) {
 
 console.log(doubler([1, 2, 3, 4])); // => [2, 4, 6, 8]
 console.log(doubler([7, 1, 8])); // => [14, 2, 16]
+
+//LOOK -->Is Prime Recall
+// Define a function isPrime(number) that returns true if number is prime. Otherwise, false. A number is prime if it is only divisible by 1 and itself.
+
+//input: integer
+//output: boolean
+//a # is prime if it is only divisible by 1 and itself.
+//num must be greater than one to be considered
+
+const isPrime = function (number) {
+  if (number < 2) {
+    return false;
+  }
+  let i = 2;
+  while (i < number) {
+    if (number % i === 0) {
+      return false;
+    }
+    i++;
+  }
+  return true;
+};
+
+console.log(isPrime(2)); // => true
+console.log(isPrime(10)); // => false
+console.log(isPrime(11)); // => true
+console.log(isPrime(9)); // => false
+console.log(isPrime(2017)); // => true
+
+//LOOK -->Choose Primes
+// Write a function choosePrimes(nums) that takes in an array of numbers as args. The function should return a new array containing the primes from the original array. A prime number is a number that is only divisible by 1 and itself. Hint: consider creating a helper function to check if a number is prime!
+
+function isPrime(num) {
+  if (num < 2) return false;
+
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function choosePrimes(nums) {
+  let newArray = [];
+
+  for (let i = 0; i < nums.length; i++) {
+    if (isPrime(nums[i])) {
+      newArray.push(nums[i]);
+    }
+  }
+
+  return newArray;
+}
+
+console.log(choosePrimes([36, 48, 9, 13, 19])); // [ 13, 19 ]
+console.log(choosePrimes([5, 6, 4, 11, 2017])); // [ 5, 11, 2017 ]
+
+//LOOK -->Next Prime
+// Write a function nextPrime that accepts a number as an argument. The function should return the nearest prime number that is greater than the given number.
+
+//input: number
+//output: nearest prime number
+//create a isPrime helper function
+//create variable to store current prime number
+//set i to the prime number, iterate through
+//if isPrime is true, return that number.
+function isPrime(num) {
+  if (num < 2) return false;
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function nextPrime(num) {
+  let i = num;
+  while (true) {
+    i++;
+    if (isPrime(i)) {
+      return i;
+    }
+  }
+}
+
+console.log(nextPrime(2)); // 3
+console.log(nextPrime(3)); // 5
+console.log(nextPrime(7)); // 11
+console.log(nextPrime(8)); // 11
+console.log(nextPrime(20)); // 23
+console.log(nextPrime(97)); // 101
+
+//LOOK -->Prime Factors
+// Write a function primeFactors that accepts a number as an argument. The function should return an array containing all of the prime numbers that can divide the given number.
+
+//input: number
+//output: array
+//create a isPrime helper function
+//iterate through the number and if an el is prime,
+//push it to a new array;
+//create empty array;
+function isPrime(num) {
+  if (num < 2) return false;
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function primeFactors(num) {
+  let newArray = [];
+  for (let i = 1; i <= num; i++) {
+    if (isPrime(i) && num % i === 0) {
+      newArray.push(i);
+    }
+  }
+  return newArray;
+}
+
+console.log(primeFactors(12)); // [2, 3]
+console.log(primeFactors(7)); // [7]
+console.log(primeFactors(16)); // [2]
+console.log(primeFactors(30)); // [2, 3, 5]
+console.log(primeFactors(35)); // [5, 7]
+console.log(primeFactors(49)); // [7]
+console.log(primeFactors(128)); // [2]
+
+//LOOK -->
+//LOOK -->
+//LOOK -->
+//LOOK -->
