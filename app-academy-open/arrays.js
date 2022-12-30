@@ -340,7 +340,134 @@ console.log(primeFactors(35)); // [5, 7]
 console.log(primeFactors(49)); // [7]
 console.log(primeFactors(128)); // [2]
 
-//LOOK -->
-//LOOK -->
-//LOOK -->
+//LOOK -->Is Anti Prime
+// Write a function isAntiPrime that accepts a number as an argument. The method should return true if the given number has more divisors than all positive numbers less than the given number. For example, 24 is an anti-prime because it has more divisors than any positive number less than 24.
+
+//input: number
+//output: boolean
+//what is a divisor and how to find it?
+//a divisor is a number that divides another without a remainder
+//use helper func findDivisors to help count divides in each number
+//count the num of divisors of each el up to but not including the num
+//create variables to hold amount to be compared and keep track of which is higher
+//compare num's divisors. return true if more.
+
+function findDivisors(num) {
+  //count divisors
+  let count = 0;
+  if (num < 1) return false;
+  for (let i = 1; i <= num; i++) {
+    if (num % i === 0) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+function isAntiPrime(num) {
+  let currentNumDivisors = findDivisors(num);
+  let compareNumDivisors = 0;
+  for (let i = 1; i < num; i++) {
+    let divisors = findDivisors(i);
+    if (divisors > compareNumDivisors) {
+      compareNumDivisors = divisors;
+    }
+  }
+  return currentNumDivisors > compareNumDivisors;
+}
+
+console.log(isAntiPrime(24)); // true
+console.log(isAntiPrime(36)); // true
+console.log(isAntiPrime(48)); // true
+console.log(isAntiPrime(360)); // true
+console.log(isAntiPrime(1260)); // true
+console.log(isAntiPrime(27)); // false
+console.log(isAntiPrime(5)); // false
+console.log(isAntiPrime(100)); // false
+console.log(isAntiPrime(136)); // false
+console.log(isAntiPrime(1024)); // false
+
+//LOOK -->Most Vowels
+// Write a function mostVowels that takes in a sentence string and returns the word of the sentence that contains the most vowels.
+
+//input: string
+//output: string with most vowels
+//need helper func to count vowels in a word
+//initialize a string of vowels
+//set up counter variable
+//iterate through string and count occurance of vowels
+//return num of vowels.
+function countVowels(word) {
+  const vowels = "aeiou";
+
+  let vowelCount = 0;
+
+  for (let i = 0; i < word.length; i++) {
+    if (vowels.includes(word[i])) {
+      vowelCount += 1;
+    }
+  }
+
+  return vowelCount;
+}
+
+//split string into an array
+//declare variable to highest num of vowels in a word.
+//initialize loop to use helper func to count vowels in each word
+//declare counter to hold num of vowels
+//compare values, push highest number of vowels to new variable;
+//declare the index where the el resides
+//return element at that index
+
+function mostVowels(sentence) {
+  const sentenceArray = sentence.split(" ");
+  let mostVowels = 0;
+  for (let i = 0; i < sentenceArray.length; i++) {
+    let vowelCount = countVowels(sentenceArray[i]);
+    //console.log(`vowels in ${sentenceArray[i]}: ${counter}`)
+    if (vowelCount > mostVowels) {
+      mostVowels = vowelCount;
+      index = i;
+    }
+  }
+  return sentenceArray[index];
+}
+
+console.log(mostVowels("what a wonderful life")); // "wonderful"
+console.log(mostVowels("what about me?")); //"about"
+
+//LOOK -->All Else Equal
+// Write a function allElseEqual that takes in an array of numbers. The function should return the element of the array that is equal to half of the sum of all elements of the array. If there is no such element, the method should return null.
+
+//input: array of nums;
+//output: sum of all elements/2 or null
+//create helper function
+//add all the elements in array, divide by 2.
+//return number
+function sumAllAndDivide(arr) {
+  const sum = arr.reduce(function (acc, currentVal) {
+    return (acc += currentVal);
+  });
+  return sum / 2;
+}
+
+//declare variable to hold value of calling helper func
+//compare sumAllAndDivide value to element in the array.
+//return if there is a matching element
+//return null if not
+
+function allElseEqual(arr) {
+  let mathValue = sumAllAndDivide(arr);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr.includes(mathValue)) {
+      return mathValue;
+    }
+  }
+  return null;
+}
+
+console.log(allElseEqual([2, 4, 3, 10, 1])); // 10
+console.log(allElseEqual([6, 3, 5, -9, 1])); // 3
+console.log(allElseEqual([1, 2, 3, 4])); // null
+
 //LOOK -->
