@@ -201,10 +201,103 @@ console.log(prevPrime(7)); // 5
 console.log(prevPrime(4)); // 3
 console.log(prevPrime(2)); // null
 console.log(prevPrime(1)); // null
-//LOOK--------------->
-//LOOK--------------->
-//LOOK--------------->
-//LOOK--------------->
+
+//LOOK--------------->Addition Mutator
+// Write a function additionMutator that accepts an array and a number as an arguments.
+// The function should mutate the input array such that every element has the given number added to it.
+
+//imput array, num
+//output: mutated array
+
+//iterate through the array
+//add num to each el of the array
+//return the mutated array
+//can I use forEach?
+function additionMutator(arr, num) {
+  arr.forEach((x, i) => {
+    arr[i] = x + num;
+  });
+}
+
+let nums1 = [3, 7, 1, 2];
+additionMutator(nums1, 4);
+console.log(nums1); // [ 7, 11, 5, 6 ]
+
+let nums2 = [11, 9, 4];
+additionMutator(nums2, -1);
+console.log(nums2); // [ 10, 8, 3 ]
+
+//LOOK--------------->Alternating Words
+// Write a function alternatingWords that accepts an array of words as an argument. The function should mutate the input array such that the words alternate between fully uppercase or lowercase. The first word should be uppercase.
+
+//input: array
+//output: mutated array with upper and lowercase words
+//iterate through and on alternate indexes, make it uppercase
+
+function alternatingWords(arr) {
+  arr.forEach((x, i) => {
+    arr[i] = i % 2 === 0 ? x.toUpperCase() : x.toLowerCase();
+  });
+}
+
+let words1 = ["Belka", "STRELKA", "laika", "DEZIK", "Tsygan"];
+alternatingWords(words1);
+console.log(words1); // [ 'BELKA', 'strelka', 'LAIKA', 'dezik', 'TSYGAN' ]
+
+let words2 = ["Yellowstone", "Yosemite", "Zion", "Acadia"];
+alternatingWords(words2);
+console.log(words2); // [ 'YELLOWSTONE', 'yosemite', 'ZION', 'acadia' ]
+
+//LOOK--------------->Reverse String
+// Write a function reverseString(str) that takes in a string. The function should return a new string where the order of the characters is reversed.
+
+//input: string
+//output: newString, order is reversed
+
+function reverseString(str) {
+  //   let reversed = str.split('').reverse().join('');
+  //   return reversed
+
+  let reversed = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    let currentChar = str[i];
+    reversed += currentChar;
+  }
+  return reversed;
+}
+
+console.log(reverseString("fish")); // 'hsif'
+console.log(reverseString("marathon")); // 'nohtaram'
+
+//LOOK--------------->Remove Last Vowel
+// Write a function removeLastVowel(word) that takes in a string and returns the string with its last vowel removed.
+
+//input: string
+//output: string without last vowel
+//reverse the string and remove the last vowel
+
+//reverse iterate thorugh the string and find the first instance of the vowel
+//return the rest of the els and remove the vowels
+//reverse it back??
+
+let removeLastVowel = function (word) {
+  let vowels = "aeiou";
+
+  for (let i = word.length - 1; i >= 0; i--) {
+    let char = word[i];
+    if (vowels.includes(char)) {
+      return word.slice(0, i) + word.slice(i + 1);
+    }
+  }
+
+  return word;
+};
+
+console.log(removeLastVowel("bootcamp")); // 'bootcmp'
+console.log(removeLastVowel("better")); // 'bettr'
+console.log(removeLastVowel("graph")); // 'grph'
+console.log(removeLastVowel("thy")); // 'thy'
+
 //LOOK--------------->
 //LOOK--------------->
 //LOOK--------------->
