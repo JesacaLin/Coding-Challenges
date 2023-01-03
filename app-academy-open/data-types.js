@@ -332,5 +332,14 @@ function removeEWords(sentence) {
 
   return array.join(" ");
 }
+
+//better way to write it:
+
+function removeEWords(sentence) {
+  const words = sentence.split(" ");
+  const filteredWords = words.filter((word) => !word.includes("e"));
+  return filteredWords.join(" ");
+}
+
 console.log(removeEWords("What time is it everyone?")); // 'What is it'
 console.log(removeEWords("Enter the building")); // 'building'
