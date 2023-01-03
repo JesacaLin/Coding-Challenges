@@ -298,6 +298,39 @@ console.log(removeLastVowel("better")); // 'bettr'
 console.log(removeLastVowel("graph")); // 'grph'
 console.log(removeLastVowel("thy")); // 'thy'
 
-//LOOK--------------->
-//LOOK--------------->
-//LOOK--------------->
+//LOOK--------------->Remove E Words
+// Write a function removeEWords(sentence) that accepts a sentence string as an arg. The function should return a new string, containing only the words that don't have the letter "e" in them.
+
+//input: string
+//output: new string without "e"
+//use helper func to loop through word to see if it includes e.
+//return true or false;
+//convert string to array
+//if array contains helper func returns true
+//split that index
+function findE(word) {
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === "e") {
+      return true;
+    }
+  }
+  return false;
+}
+
+//console.log(findE('the'))
+//console.log(findE('everyone'))
+
+function removeEWords(sentence) {
+  const array = sentence.split(" ");
+  for (let i = 0; i < array.length; i++) {
+    let currentVal = array[i];
+    if (findE(currentVal)) {
+      array.splice(i, 1);
+      i--;
+    }
+  }
+
+  return array.join(" ");
+}
+console.log(removeEWords("What time is it everyone?")); // 'What is it'
+console.log(removeEWords("Enter the building")); // 'building'
