@@ -544,7 +544,25 @@ console.log(testArray); // [1,2,3]
 removeFromArray("MIDDLE", 4, testArray); // "ERROR"
 console.log(testArray); // [1,2,3]
 
-//TODO -------------->
+//TODO -------------->Popper
+
+//input: array, num
+//output: new array with removed elements
+//declare a variable to return
+//remove the num elements from the end of the array;
+//return array
+const popper = function (array, num) {
+  const removeElements = array.splice(-num);
+  return removeElements;
+};
+
+let arr1 = ["a", "b", "c", "d", "e"];
+console.log(popper(arr1, 2)); // [ 'e', 'd' ]
+console.log(arr1); // [ 'a', 'b', 'c' ]
+
+let arr2 = ["kale", "spinach", "collard greens", "cabbage"];
+console.log(popper(arr2, 1)); // [ 'cabbage' ]
+console.log(arr2); // [ 'kale', 'spinach', 'collard greens' ]
 
 //TODO -------------->
 
