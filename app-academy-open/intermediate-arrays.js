@@ -564,9 +564,55 @@ let arr2 = ["kale", "spinach", "collard greens", "cabbage"];
 console.log(popper(arr2, 1)); // [ 'cabbage' ]
 console.log(arr2); // [ 'kale', 'spinach', 'collard greens' ]
 
-//TODO -------------->
+//TODO -------------->Rotate Right
+function rotateRight(array, num) {
+  // create a copy of the input array
+  let rotated = array.slice();
+  // loop num times
+  for (let i = 0; i < num; i++) {
+    // remove the last element of the rotated array and store it in a variable
+    let removed = rotated.pop();
+    // add the removed element to the beginning of the rotated array
+    rotated.unshift(removed);
+  }
+  // return the rotated array
+  return rotated;
+}
+let arr = ["a", "b", "c", "d", "e"];
+console.log(rotateRight(arr, 2)); // [ 'd', 'e', 'a', 'b', 'c' ]
 
-//TODO -------------->
+let animals = ["wombat", "koala", "opossum", "kangaroo"];
+console.log(rotateRight(animals, 3)); // [ 'koala', 'opossum', 'kangaroo', 'wombat' ]
+
+//TODO -------------->Rotate
+const rotate = function (array, num) {
+  //determine if num is positive or negative
+  if (num > 0) {
+    //if positive - loop forward num times
+    for (let i = 0; i < num; i++) {
+      //remove last element of the array, store as a variable
+      let removed = array.pop();
+      //add the removed element to the beginning of the array.
+      array.unshift(removed);
+    }
+    //if negative - loop backwwards
+  } else {
+    for (let i = 0; i > num; i--) {
+      //remove first element, store as a variable
+      let firstEl = array.shift();
+      //add the removed element to the end of the array.
+      array.push(firstEl);
+    }
+  }
+};
+
+let arr = ["a", "b", "c", "d", "e"];
+rotate(arr, 2);
+console.log(arr); // [ 'd', 'e', 'a', 'b', 'c' ]
+
+let animals = ["wombat", "koala", "opossum", "kangaroo"];
+rotate(animals, -1);
+console.log(animals); // [ 'koala', 'opossum', 'kangaroo', 'wombat' ]
 
 //TODO -------------->
 
