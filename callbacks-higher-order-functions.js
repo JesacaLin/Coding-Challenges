@@ -255,6 +255,81 @@ const arr2 = [15, 88, 1, 5, 7];
 const arr3 = [100, 15, 10, 1, 5];
 console.log(union([arr1, arr2, arr3])); // should log: [5, 10, 15, 88, 1, 7, 100]
 
-LOOK; //CHALLENGE:
+LOOK; //CHALLENGE: Challenge: objOfMatches
+/*Construct a function objOfMatches that accepts two arrays and a callback. objOfMatches will build an object and return it. To build the object, objOfMatches will test each element of the first array using the callback to see if the output matches the corresponding element (by index) of the second array. If there is a match, the element from the first array becomes a key in an object, and the element from the second array becomes the corresponding value.*/
 
-LOOK; //CHALLENGE:
+//initialize a new obj
+// use forEach to compare the two arrays?
+//you have to do this based on index
+//use bracket notation to add to new obj?
+function objOfMatches(arr1, arr2, callback) {
+  let object = {};
+  arr1.forEach(function (value, index) {
+    if (arr2[index] === callback(value)) {
+      object[value] = arr2[index];
+    }
+  });
+  return object;
+}
+
+// Uncomment these to check your work!
+const arr1 = ["hi", "howdy", "bye", "later", "hello"];
+const arr2 = ["HI", "Howdy", "BYE", "later", "HELLO"];
+function uppercaser(str) {
+  return str.toUpperCase();
+}
+console.log(objOfMatches(arr1, arr2, uppercaser)); // should log: { hi: 'HI', bye: 'BYE', hello: 'HELLO' }
+
+LOOK; //CHALLENGE: arrToObj
+// Add code to the function arrToObj in the place marked "ADD CODE HERE" in order to achieve the desired console logs. arrToObj should return an object that has elements from the passed-in array as keys, and the outputs from the callback (when those elements are passed in) as the corresponding values.
+
+function arrToObj(array, callback) {
+  const obj = {};
+  for (let i = 0; i < array.length; i++) {
+    obj[array[i]] = callback(array[i]);
+  }
+  return obj;
+}
+
+// Uncomment these to check your work!
+const arrOfStrings = ["beer", "glue"];
+const capitalize = (str) => str.toUpperCase();
+console.log(arrToObj(arrOfStrings, capitalize)); // should log: { beer: 'BEER', glue: 'GLUE' }
+
+// LOOK --> Challenge: multiMap
+// Construct a function multiMap that will accept two arrays - an array of values and an array of callbacks. multiMap will return an object whose keys match the elements in the array of values. The corresponding values that are assigned to the keys will be arrays consisting of outputs from the array of callbacks, where the input to each callback is the key.
+
+function multiMap(arrOfValues, arrOfCallbacks) {
+  //initialize new obj
+  const obj = {};
+  //create a loop
+  for (let i = 0; i < arrOfValues.length; i++) {
+    //initialize new array to store callback values.
+    let callbackValues = [];
+    //create inner loop to transform each arrOfValues value with callbacks.
+    for (let j = 0; j < arrOfCallbacks.length; j++) {
+      //push results to new array
+      callbackValues.push(arrOfCallbacks[j](arrOfValues[i]));
+    }
+    //assign key value pairs
+    obj[arrOfValues[i]] = callbackValues;
+  }
+  //return obj
+  return obj;
+}
+
+// Uncomment these to check your work!
+function uppercaser(str) {
+  return str.toUpperCase();
+}
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1).toLowerCase();
+}
+function repeater(str) {
+  return str + str;
+}
+const items = ["catfood", "glue", "beer"];
+const functions = [uppercaser, capitalize, repeater];
+console.log(multiMap(items, functions)); // should log: { catfood: ['CATFOOD', 'Catfood', 'catfoodcatfood'], glue: ['GLUE', 'Glue', 'glueglue'], beer: ['BEER', 'Beer', 'beerbeer'] }
+
+// LOOK -->
