@@ -119,3 +119,39 @@ function recursiveFact(n) {
   }
 }
 console.log(recursiveFact(5));
+
+//Big-O = O(n)
+
+//TODO --> Linear Search
+//Problem - Given an array of 'n' elemens and a target element 't', find the index of 't', find the index of 't' in the array. Return -1 if the target element is not found.
+
+//initialize a loop to compare elements of array to t
+//return index
+//return -1 if not found
+//fast way of doing with indexOf? but it's not a linear search
+
+function linearSearch(array, t) {
+  // for (let i = 0; i < array.length; i++){
+  //     if (array[i] === t){
+  //         return i
+  //     }
+  // }
+  // return -1
+
+  let i = 0;
+  while (i < array.length) {
+    if (array[i] === t) {
+      return i;
+    }
+    i++;
+  }
+  return -1;
+
+  // return array.indexOf(10)
+}
+
+console.log(linearSearch([-5, 2, 10, 4, 6], 10));
+console.log(linearSearch([-5, 2, 10, 4, 6], 6));
+console.log(linearSearch([-5, 2, 10, 4, 6], 20));
+
+//big O = O(n)
