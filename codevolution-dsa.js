@@ -38,7 +38,7 @@ function factorials(n) {
   return counter;
 }
 //Big O = O(n)
-console.log(factorials(5))
+console.log(factorials(5));
 
 //TODO --> Give a natural number 'n', determine if the number is prime or not
 
@@ -91,7 +91,7 @@ function findFiboRecursion(n) {
   if (n === 0 || n === 1) {
     return n;
   } else {
-    return findFiboRecursion(n - 1) + findFiboRecursion(n - 2 );
+    return findFiboRecursion(n - 1) + findFiboRecursion(n - 2);
   }
 }
 
@@ -104,11 +104,18 @@ function findFiboRecursion(n) {
 // console.log(findFibo(2));
 // console.log(findFibo(7));
 
-
 //TODO-->Factorial-recursion
 
 //given an integer 'n', find the factorial of that integer
 
-//what is a factorial? - a non-negative integer is the product of all positivie integers less than or equal to "n". 
+//what is a factorial? - a non-negative integer is the product of all positivie integers less than or equal to "n".
 
-function recursiveFact()
+function recursiveFact(n) {
+  //base case
+  if (n == 1 || n == 0) {
+    return 1;
+  } else {
+    return n * recursiveFact(n - 1);
+  }
+}
+console.log(recursiveFact(5));
