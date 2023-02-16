@@ -257,9 +257,33 @@ function bubbleSortReversed(arr) {
     }
   } while (swapped);
 }
-const arr = [8, 20, -2, 4, -6];
-bubbleSortReversed(arr);
-console.log(arr);
+// const arr = [8, 20, -2, 4, -6];
+// bubbleSortReversed(arr);
+// console.log(arr);
 
 //big O = O(n^2) - quadratic time complexity
 //n squared
+
+//TODO --> Insertion Sort
+
+function insertionSort(arr) {
+  //starts a loop to iterate over each element in the array starting from second element
+  for (let i = 1; i < arr.length; i++) {
+    //initialize variable to the value of the current element being processed
+    let numberToInsert = arr[i];
+    //initialize variable to store the index of the element to the left of numberToInsert
+    let j = i - 1;
+    //start while loop, running as long as there are values in the sorted sub-list to the left
+    while (j >= 0 && arr[j] > numberToInsert) {
+      //shifts value of the element at index j one position to the right
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    //inserts numberToInsert into its correct position in the sorted sub-list by setting the value of the element at index j+1 to numberToInsert.
+    arr[j + 1] = numberToInsert;
+  }
+}
+// const arr = [8, 20, -2, 4, -6];
+const arr = [-6, 20, 8, -2, 4];
+insertionSort(arr);
+console.log(arr);
