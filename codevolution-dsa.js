@@ -150,8 +150,116 @@ function linearSearch(array, t) {
   // return array.indexOf(10)
 }
 
-console.log(linearSearch([-5, 2, 10, 4, 6], 10));
-console.log(linearSearch([-5, 2, 10, 4, 6], 6));
-console.log(linearSearch([-5, 2, 10, 4, 6], 20));
+// console.log(linearSearch([-5, 2, 10, 4, 6], 10));
+// console.log(linearSearch([-5, 2, 10, 4, 6], 6));
+// console.log(linearSearch([-5, 2, 10, 4, 6], 20));
 
 //big O = O(n)
+
+//TODO --> Binary Search
+
+//initialize function with array and t as parameters
+//if array is not sorted, it has to be sorted first.
+//set pointer variable to the front and back of the array
+//create loop to divide the array
+
+function binarySearch(array, t) {
+  let left = 0;
+  let right = array.length - 1;
+  //while there are still values in the array
+  while (left <= right) {
+    //divide the array in half to find midpoint
+    let mid = Math.floor((left + right) / 2);
+    //check to see if t equals to mid value of the array. No need to keep searching
+    if (array[mid] === t) {
+      return mid;
+      //if t is less than middle element then search left half of the array.
+    } else if (array[mid] < t) {
+      left = mid + 1;
+      //if t is more than middle element then we search the right half of the array.
+    } else {
+      right = mid - 1;
+    }
+  }
+  //if array is empty, return -1
+  return -1;
+}
+//Big-O = O(logn) logarithmic time complexity
+// console.log(binarySearch([-5, 2, 4, 6, 10], 10));
+// console.log(binarySearch([-5, 2, 4, 6, 10], -5));
+// console.log(binarySearch([-5, 2, 4, 6, 10], 11));
+
+//TODO --> Binary Search - recursion
+
+//base case is an empty array? OR left is <= right?
+
+function recursionBinary(array, t) {
+  let left = 0;
+  let right = array.length - 1;
+  let mid = Math.floor((left + right) / 2);
+  if (right < 0) {
+    return -1;
+  }
+
+  if (array[mid] === t) {
+    return mid;
+  } else if (array[mid] < t) {
+    left = recursionBinary(mid + 1);
+  } else {
+    recursionBinary(mid - 1);
+  }
+}
+
+// console.log(recursionBinary([-5, 2, 4, 6, 10], 10));
+// console.log(recursionBinary([-5, 2, 4, 6, 10], -5));
+// console.log(recursionBinary([-5, 2, 4, 6, 10], 11));
+// console.log(recursionBinary([], 2));
+
+//TODO --> BUBBLE SORT
+
+function bubbleSort(arr) {
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+}
+// const arr = [8, 20, -2, 4, -6]
+// bubbleSort(arr)
+// console.log(arr);
+
+//Bubble sort reversed
+//initialize a variable to store whether values have been swapped
+//use a do while loop to have code execute at least once
+//initialize a for loop
+//use if statement to decide if first value is bigger than 2nd value
+//change swap status
+//do while condition - if swapped, then code runs again. if not, loop ends
+
+function bubbleSortReversed(arr) {
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] < arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+}
+const arr = [8, 20, -2, 4, -6];
+bubbleSortReversed(arr);
+console.log(arr);
+
+//big O = O(n^2) - quadratic time complexity
+//n squared
