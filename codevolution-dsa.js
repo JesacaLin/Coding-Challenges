@@ -334,28 +334,28 @@
 //if one of the arrays is empty, exit the loop
 //using spread operator, merge the sorted array and whatever array still containing elements
 
-function mergeSort(arr) {
-  if (arr.length <= 1) {
-    return arr;
-  }
+// function mergeSort(arr) {
+//   if (arr.length <= 1) {
+//     return arr;
+//   }
 
-  const mid = Math.floor(arr.length / 2);
-  let leftArr = arr.slice(0, mid);
-  let rightArr = arr.slice(mid);
-  return merge(mergeSort(leftArr), mergeSort(rightArr));
-}
+//   const mid = Math.floor(arr.length / 2);
+//   let leftArr = arr.slice(0, mid);
+//   let rightArr = arr.slice(mid);
+//   return merge(mergeSort(leftArr), mergeSort(rightArr));
+// }
 
-function merge(leftArr, rightArr) {
-  let sortedArr = [];
-  while (leftArr.length && rightArr.length) {
-    if (leftArr[0] <= rightArr[0]) {
-      sortedArr.push(leftArr.shift());
-    } else {
-      sortedArr.push(rightArr.shift());
-    }
-  }
-  return [...sortedArr, ...leftArr, ...rightArr];
-}
+// function merge(leftArr, rightArr) {
+//   let sortedArr = [];
+//   while (leftArr.length && rightArr.length) {
+//     if (leftArr[0] <= rightArr[0]) {
+//       sortedArr.push(leftArr.shift());
+//     } else {
+//       sortedArr.push(rightArr.shift());
+//     }
+//   }
+//   return [...sortedArr, ...leftArr, ...rightArr];
+// }
 
 // const arr = [8, 20, -2, 4, -6];
 // console.log(mergeSort(arr));
@@ -380,6 +380,56 @@ function cartesianProduct(arr1, arr2) {
   return result;
 }
 
-const arr1 = [1, 2];
-const arr2 = [3, 4, 5];
-console.log(cartesianProduct(arr1, arr2));
+// const arr1 = [1, 2];
+// const arr2 = [3, 4, 5];
+// console.log(cartesianProduct(arr1, arr2));
+
+//TODO --> climbing staircare - recursion
+
+function climbingStaircase(n) {
+  //base case - there is only one way to climb 0 or 1 steps
+  if (n <= 1) {
+    return 1;
+  } else {
+    //add up the number of ways to climb n -1 steps and n - 2 steps
+    return climbingStaircase(n - 1) + climbingStaircase(n - 2);
+  }
+}
+
+// console.log(climbingStaircase(1));
+// console.log(climbingStaircase(2));
+// console.log(climbingStaircase(4));
+
+//TODO --> Tower of Hanoi
+//You can initialize three arrays to represent the three rods, and then populate the starting rod with the disks. As you move the disks from one rod to another, you can remove them from the source rod array and push them onto the destination rod array.
+//shift 'n-1' disks from 'A' to 'B', using 'C' (when required)
+//Shift last disk from 'A' to 'C' (this is also base case)
+//Shift 'n-1' disks from 'B' to 'C', using 'A' (when required)
+
+// function towerOfHanoi(n, fromRod, toRod, usingRod){
+//   //base case
+//   if(n === 1){
+//     console.log(`shift ${n} from ${fromRod} to ${toRod}`);
+//     return
+//   }
+//   towerOfHanoi(n - 1, fromRod, usingRod, toRod)
+//     console.log(`shift ${n} from ${fromRod} to ${toRod}`);
+//   towerOfHanoi(n -1, usingRod, toRod, fromRod )
+
+// }
+// towerOfHanoi(3, 'A', 'C', 'B')
+
+//shift 'n-1' disks from 'A' to 'B', using 'C' (when required)
+//Shift last disk from 'A' to 'C' (this is also base case)
+//Shift 'n-1' disks from 'B' to 'C', using 'A' (when required)
+function towerOfHanoi(n, rodA, rodC, rodB) {
+  //base case
+  if (n === 1) {
+    console.log(`shift ${n} from ${rodA} to ${rodC}`);
+    return;
+  }
+  towerOfHanoi(n - 1, rodA, rodB, rodC);
+  console.log(`shift ${n} from ${rodA} to ${rodB}`);
+  towerOfHanoi(n - 1, rodC, rodA, rodB);
+}
+towerOfHanoi(3, "A", "C", "B");
