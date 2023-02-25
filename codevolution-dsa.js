@@ -422,14 +422,14 @@ function climbingStaircase(n) {
 //shift 'n-1' disks from 'A' to 'B', using 'C' (when required)
 //Shift last disk from 'A' to 'C' (this is also base case)
 //Shift 'n-1' disks from 'B' to 'C', using 'A' (when required)
-function towerOfHanoi(n, rodA, rodC, rodB) {
-  //base case
-  if (n === 1) {
-    console.log(`shift ${n} from ${rodA} to ${rodC}`);
-    return;
-  }
-  towerOfHanoi(n - 1, rodA, rodB, rodC);
-  console.log(`shift ${n} from ${rodA} to ${rodB}`);
-  towerOfHanoi(n - 1, rodC, rodA, rodB);
-}
-towerOfHanoi(3, "A", "C", "B");
+// function towerOfHanoi(n, rodA, rodC, rodB) {
+//   //base case
+//   if (n === 1) {
+//     console.log(`shift ${n} from ${rodA} to ${rodC}`);
+//     return;
+//   }
+//   towerOfHanoi(n - 1, rodA, rodB, rodC);
+//   console.log(`shift ${n} from ${rodA} to ${rodB}`);
+//   towerOfHanoi(n - 1, rodC, rodA, rodB);
+// }
+// towerOfHanoi(3, "A", "C", "B");

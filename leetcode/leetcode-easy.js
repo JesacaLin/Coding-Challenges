@@ -22,21 +22,21 @@
 // Acceptance Rate
 // 55.9%
 
-var detectCapitalUse = function (word) {
-  if (word === word.toUpperCase() || word === word.toLowerCase()) return true;
-  for (let i = 1; i < word.length; i++) {
-    let firstChar = word[0];
-    if (word[i] !== word[i].toLowerCase()) {
-      return false;
-    } else if (
-      firstChar === firstChar.toUpperCase() &&
-      word[i] !== word[i].toLowerCase()
-    ) {
-      return false;
-    }
-  }
-  return true;
-};
+// var detectCapitalUse = function (word) {
+//   if (word === word.toUpperCase() || word === word.toLowerCase()) return true;
+//   for (let i = 1; i < word.length; i++) {
+//     let firstChar = word[0];
+//     if (word[i] !== word[i].toLowerCase()) {
+//       return false;
+//     } else if (
+//       firstChar === firstChar.toUpperCase() &&
+//       word[i] !== word[i].toLowerCase()
+//     ) {
+//       return false;
+//     }
+//   }
+//   return true;
+// };
 
 //LOOK -------------->Two Sum
 // Easy
@@ -80,25 +80,61 @@ var detectCapitalUse = function (word) {
 //add inner loop val to current value
 //if adds up to target, push to new array
 
-var twoSum = function (nums, target) {
-  let newArray = [];
-  for (let i = 0; i < nums.length; i++) {
-    let currentVal = nums[i];
-    for (let j = i + 1; j < nums.length; j++) {
-      if (currentVal + nums[j] === target) {
-        newArray.push(i, j);
+// var twoSum = function (nums, target) {
+//   let newArray = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     let currentVal = nums[i];
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (currentVal + nums[j] === target) {
+//         newArray.push(i, j);
+//       }
+//     }
+//   }
+
+//   return newArray;
+// };
+// console.log(twoSum([2, 7, 11, 15], 9)); //[0, 1]
+// console.log(twoSum([2, 7, 11, 15], 9)); //[0, 1]
+// console.log(twoSum([3, 2, 4], 6)); //[1, 2]
+// console.log(twoSum([3, 3], 6)); //[0, 1]
+
+//LOOK -------------->Best Time to Buy and Sell Stock
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+var maxProfit = function (prices) {
+  //find lowest number in the array as the buy date
+  //highest as the sell date
+  //however, index of buying has to be lower than index of selling
+
+  //initialize variables for min (first value in array) and maxProfits
+  //iterate through the array and evaluate if value is less than the current min
+  //if yes, replace min with current value
+  //else, calculate the profit and compare it to the current maxProfit
+  //if higher, replace current maxProfit
+  //returns the maxProfit
+  let min = prices[0];
+  let maxProfit = 0;
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < min) {
+      min = prices[i];
+    } else {
+      let currentMaxProfit = prices[i] - min;
+      if (currentMaxProfit > maxProfit) {
+        maxProfit = currentMaxProfit;
       }
     }
   }
-
-  return newArray;
+  return maxProfit;
 };
-console.log(twoSum([2, 7, 11, 15], 9)); //[0, 1]
-console.log(twoSum([2, 7, 11, 15], 9)); //[0, 1]
-console.log(twoSum([3, 2, 4], 6)); //[1, 2]
-console.log(twoSum([3, 3], 6)); //[0, 1]
 
-//LOOK -------------->
+console.log(maxProfit([2, 4, 1]));
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(maxProfit([7, 6, 4, 3, 1]));
+
 //LOOK -------------->
 //LOOK -------------->
 //LOOK -------------->
