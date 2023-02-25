@@ -135,7 +135,66 @@ console.log(maxProfit([2, 4, 1]));
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
 console.log(maxProfit([7, 6, 4, 3, 1]));
 
-//LOOK -------------->
+//LOOK -------------->Majority Element
+
+//big-O is quadratic
+// var majorityElement = function(nums) {
+//   //set condition to compare next to each other
+//    //use counter to keep track
+//   //initialize an outer loop with current value variable
+//       //innerCounter
+//       //initialize inner loop and compare values to current variable in outter loop
+//           //if matches, ++ innerCounter
+//       //upon each inner loops's
+//       let counter = 0; //1
+//       let winningNum = 0; //3
+
+//       for(let i = 0; i < nums.length; i++){
+
+//           for (let j = i + 1; j < nums.length; j++){
+//               let innerCounter = 0; //1
+//               if(nums[i] === nums[j]){
+//               innerCounter ++
+//                }
+
+//               if (innerCounter > counter){
+//               counter = innerCounter;
+//               winningNum = nums[i]
+//           }
+//       }
+//   }
+//   return winningNum;
+// };
+
+// Given an array nums of size n, return the majority element.
+
+// The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+var majorityElement = function (nums) {
+  //use an empty object to keep track of occurances
+  //initialize a for loop to check if object contains the key
+  //if yes, ++
+  //if no, set value of key to 1;
+  //use a for in loop to iterate through the object keys and see which value returns true on the condition. nums.length/2
+  let count = {};
+  for (let i = 0; i < nums.length; i++) {
+    if (count[nums[i]]) {
+      count[nums[i]]++;
+    } else {
+      count[nums[i]] = 1;
+    }
+  }
+  for (const num in count) {
+    if (count[num] > nums.length / 2) {
+      return num;
+    }
+  }
+};
+console.log(majorityElement([3, 2, 3]));
+console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
+
+//Big O - O(n) - Linear
+
 //LOOK -------------->
 //LOOK -------------->
 
