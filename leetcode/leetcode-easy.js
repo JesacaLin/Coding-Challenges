@@ -240,7 +240,24 @@ const containsDuplicate = (nums) => {
 
 console.log(containsDuplicate([2, 14, 18, 22, 22]));
 
-//LOOK -------------->
+//LOOK -------------->VALID PALINDROME
+
+//inputer: string
+//output: boolean
+//need to remove all non-alphanumeric characters and spaces.
+//also need to convert all letters to lowercase
+//empty strings automatically return true
+
+//method:
+//validate input type, use replace(/[^0-9a-z]/gi, '') and toLowerCase method
+//turn into array, reverse it
+//compare to original
+
+var isPalindrome = function (s) {
+  const newString = s.replace(/[^0-9a-z]/gi, "").toLowerCase();
+  const reverseString = newString.split("").reverse().join("");
+  return newString === reverseString;
+};
 
 //LOOK -------------->
 //LOOK -------------->
