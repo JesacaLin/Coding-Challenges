@@ -259,6 +259,48 @@ var isPalindrome = function (s) {
   return newString === reverseString;
 };
 
-//LOOK -------------->
+//LOOK -------------->Valid Anagram
+
+//input: two strings
+//output: boolean
+//method:
+//turn both strings into arrays and sort them.
+//compare
+var isAnagram = function (s, t) {
+  if (s.length !== t.length) return false;
+  const sArray = s.split("").sort().join("");
+  const tArray = t.split("").sort().join("");
+  return sArray === tArray;
+};
+
+//IDEAL IMPLEMENTATION
+// var isAnagram = function (s, t) {
+//   if (s.length !== t.length) return false;
+//   let letterS = {};
+//   let letterT = {};
+
+//   s.split("").forEach((item) => {
+//     if (!letterS[item]) {
+//       letterS[item] = 1;
+//     } else {
+//       letterS[item]++;
+//     }
+//   });
+
+//   t.split("").forEach((item) => {
+//     if (!letterT[item]) {
+//       letterT[item] = 1;
+//     } else {
+//       letterT[item]++;
+//     }
+//   });
+
+//   for (let key in letterS) {
+//     if (letterS[key] !== letterT[key]) return false;
+//   }
+
+//   return true;
+// };
+
 //LOOK -------------->
 //LOOK -------------->
