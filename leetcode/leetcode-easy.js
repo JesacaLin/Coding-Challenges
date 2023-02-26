@@ -131,9 +131,9 @@ var maxProfit = function (prices) {
   return maxProfit;
 };
 
-console.log(maxProfit([2, 4, 1]));
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
-console.log(maxProfit([7, 6, 4, 3, 1]));
+// console.log(maxProfit([2, 4, 1]));
+// console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+// console.log(maxProfit([7, 6, 4, 3, 1]));
 
 //LOOK -------------->Majority Element
 
@@ -190,12 +190,56 @@ var majorityElement = function (nums) {
     }
   }
 };
-console.log(majorityElement([3, 2, 3]));
-console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
+// console.log(majorityElement([3, 2, 3]));
+// console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
 
 //Big O - O(n) - Linear
 
-//LOOK -------------->
+//LOOK -------------->Contains Deuplicate
+//have to make comparison, use an empty object.. but if you don't need to indicate which is the highest duplicated value, then using a set or loop would do.
+//input: array of nums
+//output: boolean
+//condition: >= 2 times
+//  var containsDuplicate = function(nums) {
+//   //initialize an empty obj to store the array values as key/value pairs
+//   //use for loop to iterate thorugh the array
+//       //increment values that appear more than once
+//       //add key to obj if it doesn't exist, set value to 1
+//   //use for/in loop to loop through obj
+//       //establish conditional to evaluate if conditions are met
+//       //return true
+//   //after all loops have run, return false
+
+//   let obj = {};
+//   for(let i = 0; i < nums.length; i++){
+//       if(obj[nums[i]]){
+//           obj[nums[i]]++;
+//       } else{
+//           obj[nums[i]] = 1;
+//       }
+//   }
+//   for(const value in obj){
+//       if(obj[value] > 1){
+//           return true;
+//       }
+//   }
+//   return false;
+
+// };
+
+//would be easier to use a Set. Set allows you to optionally add in an array.
+//input: array
+//output: boolean
+//method: use set
+const containsDuplicate = (nums) => {
+  //creates a set to store unique values from nums array
+  const newSet = new Set(nums);
+  //compare lengths of set vs array
+  return newSet.size !== nums.length;
+};
+
+console.log(containsDuplicate([2, 14, 18, 22, 22]));
+
 //LOOK -------------->
 
 //LOOK -------------->
