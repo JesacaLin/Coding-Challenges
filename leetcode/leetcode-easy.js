@@ -302,5 +302,113 @@ var isAnagram = function (s, t) {
 //   return true;
 // };
 
-//LOOK -------------->
-//LOOK -------------->
+//LOOK -------------->LONGEST PALINDROME
+
+//method: use frequency table. Will treat upper and lower case characters as distinct values.
+//if values are even numbers, can keep one key that has value of one.
+//longest length is all the even values added + 1
+
+//declare new empty obj, variable to hold length, boolean flag for whether length is odd or not.
+//initialize a loop and add occurances to object.
+//using for in loop, count occurances of even values and add 1.
+
+var longestPalindrome = function (s) {
+  let obj = {};
+  let length = 0;
+  let hasOddLength = false;
+
+  for (let i = 0; i < s.length; i++) {
+    let currentChar = s[i];
+    obj[currentChar] = (obj[currentChar] || 0) + 1;
+  }
+
+  for (const char in obj) {
+    if (obj[char] % 2 === 0) {
+      length += obj[char];
+    } else {
+      hasOddLength = true;
+      length += obj[char] - 1;
+    }
+  }
+
+  return hasOddLength ? length + 1 : length;
+};
+
+// console.log(longestPalindrome("aaaAaaaa"));
+// console.log(longestPalindrome("ccc"));
+// console.log(longestPalindrome("abccccdd"));
+// console.log(longestPalindrome("b"));
+// console.log(longestPalindrome("bb"));
+
+//TODO-------------->LONGEST COMMON PREFIX
+
+//LOOK
+//in comparison problems, you alway seem to need:
+//new variable to hold the result
+//variable to hold the data is being compared
+//iteration of some kind
+//**should always handle edge cases */
+//might be smart to think about WHICH should be your comparison case
+//might also be good to think about alteratives to nested loops...
+
+//input: array strings
+//output: string
+//method: somehow compare the characters at the same position in each string...
+//handle edge cases of empty string and array with one word
+//start with first word using a for loop
+//compare characters from first word to characters in the other words at the same index
+
+var longestCommonPrefix = function (strs) {
+  if (strs.length === 0) {
+    return "";
+  }
+  if (strs.length === 1) {
+    return strs[0];
+  }
+  let result = "";
+  let first = strs[0];
+  for (let i = 0; i < first.length; i++) {
+    let char = first[i];
+    for (let j = 1; j < strs.length; j++) {
+      if (i >= strs[j].length || char !== strs[j][i]) {
+        return result;
+      }
+    }
+    result += char;
+  }
+  return result;
+};
+
+console.log(longestCommonPrefix([]));
+console.log(longestCommonPrefix(["flower"]));
+console.log(longestCommonPrefix(["flower", "flow", "flight"]));
+console.log(longestCommonPrefix(["dog", "racecar", "car"]));
+
+//fastest solution found:
+
+var longestCommonPrefix = function (strs) {
+  // checking constraints. if length is false, meaning zero, return empty string.
+  if (!strs.length) return "";
+  //set first string in array as a variable
+  let itemStorage = strs[0];
+  //initialize empty string to store result
+  let commonPrefix = "";
+  //use map method to iterate through the array and find the shortest string to use for comparison. shortest is set to itemStorage variable.
+  strs.map((item) => {
+    if (item.length <= itemStorage.length) {
+      itemStorage = item;
+    }
+  });
+  //Within the loop, the every method is called on the strs array, which returns true if every string in the array has the current character at the current index.
+  for (let i = 0; i < itemStorage.length; i++) {
+    //if every method returns true, current letter is added to empty string
+    if (strs.every((stringItem) => stringItem[i] === itemStorage[i])) {
+      commonPrefix = commonPrefix + itemStorage[i];
+      //if not, breaks out of loop
+    } else {
+      break;
+    }
+  }
+  //returns result
+  return commonPrefix;
+};
