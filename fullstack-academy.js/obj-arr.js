@@ -129,22 +129,117 @@ let leetChars = [
 //store current leetChars at the same index in a variable
 //set the empty object's key value pairs with the two variables
 
-function leetTranslator(str) {
-  //create an object and use it as a translator
-  let obj = {};
-  for (let i = 0; i < letters.length; i++) {
-    let currentLetter = letters[i];
-    let currentLeetChar = leetChars[i];
-    obj[currentLetter] = currentLeetChar;
-  }
-  //translate the str by using the obj
-  let newStr = "";
-  for (let i = 0; i < str.length; i++) {
-    let letter = str[i].toLowerCase();
-    let leetChar = obj[letter];
-    newStr += leetChar;
-  }
-  return newStr;
-}
+// function leetTranslator(str) {
+//   //create an object and use it as a translator
+//   let obj = {};
+//   for (let i = 0; i < letters.length; i++) {
+//     let currentLetter = letters[i];
+//     let currentLeetChar = leetChars[i];
+//     obj[currentLetter] = currentLeetChar;
+//   }
+//   //translate the str by using the obj
+//   let newStr = "";
+//   for (let i = 0; i < str.length; i++) {
+//     let letter = str[i].toLowerCase();
+//     let leetChar = obj[letter];
+//     newStr += leetChar;
+//   }
+//   return newStr;
+// }
 
-console.log(leetTranslator("Fullstack"));
+// console.log(leetTranslator("Fullstack"));
+
+// Pet Sounds
+
+let animalNoises = [
+  {
+    dog: {
+      America: "Woof! Woof!",
+      Germany: "Wau Wau!",
+      England: "Bow wow!",
+      Uruguay: "Jua jua!",
+      Afrikaans: "Blaf!",
+      Korea: "Mong mong!",
+      Iceland: "Voff voff!",
+      Albania: "Ham!",
+      Algeria: "Ouaf ouaf!",
+    },
+  },
+  {
+    cat: {
+      America: "Meow",
+      Germany: "Miauw!",
+      England: "mew mew",
+      Uruguay: "Miau Miau!",
+      Afrikaans: "Purr",
+      Korea: "Nyaong!",
+      Iceland: "Kurnau!",
+      Albania: "Miau",
+      Algeria: "Miaou!",
+    },
+  },
+  {
+    chicken: {
+      America: "Cluck cluck",
+      Germany: "tock tock tock",
+      England: "Cluck Cluck",
+      Uruguay: "gut gut gdak",
+      Afrikaans: "kukeleku",
+      Korea: "ko-ko-ko",
+      Iceland: "Chuck-chuck!",
+      Albania: "Kotkot",
+      Algeria: "Cotcotcodet",
+    },
+  },
+];
+
+// Write a function petSounds that takes an animal name and a country name as arguments.
+// Using the globally-defined animalNoises array, petSounds should return a sentence that explains which sound the animal makes in the given country.
+
+//input: array: string in obj, string in embedded object
+//ouput: string
+//data is an array with three objects
+//embedded withing the 3 objects is an obj of noises based on country
+//game plan: store the retrieved data in variables then use template literal?
+//use a loop and store the obj with the right animal in a variable
+//then loop through is find the country
+//but do I need a loop?
+
+// function petSounds(animal, country) {
+//   for (let i = 0; i < animalNoises.length; i++) {
+//     let currentAnimal = animalNoises[i];
+//     if (animal in currentAnimal) {
+//       let countrySounds = currentAnimal[animal];
+//       let sound = countrySounds[country];
+//       animal = animal[0].toUpperCase() + animal.slice(1);
+//       return `${animal}s in ${country} say ${sound}`;
+//     }
+//   }
+// }
+// console.log(petSounds("dog", "Iceland")); // => Dogs in Iceland say Voff voff!
+
+// petSounds("cat", "Korea"); // => Cats in Korea say Nyaong!
+
+// Frequency Analysis
+// Define a function frequencyAnalysis that accepts a string of lower-case letters as an argument.
+
+// frequencyAnalysis should return an object containing the amount of times each letter appeared in the string.
+
+//iterate through the string
+//add the elements of the string into the object as keys.
+//increment if present
+
+const frequencyAnalysis = (str) => {
+  str = str.toLowerCase();
+  const obj = {};
+  for (let i = 0; i < str.length; i++) {
+    if (!(str[i] in obj)) {
+      obj[str[i]] = 1;
+    } else {
+      obj[str[i]]++;
+    }
+  }
+  return obj;
+};
+
+console.log(frequencyAnalysis("abca")); // => {a: 2, b: 1, c: 1}
