@@ -66,62 +66,62 @@
 // leetTranslator should return a new string that is the translation of the original string into leet.
 // The leet codex is below, along with an array of english letters and an array of the corresponding leet characters. Use the two arrays to create a leetCodex object to use in making the translations.
 
-let letters = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-let leetChars = [
-  "@",
-  "8",
-  "(",
-  "|)",
-  "3",
-  "ph",
-  "g",
-  "#",
-  "l",
-  "_|",
-  "|<",
-  "1",
-  "|'|'|",
-  "//",
-  "0",
-  "|D",
-  "(,)",
-  "|2",
-  "5",
-  "+",
-  "|_|",
-  "|/",
-  "|/|/'",
-  "><",
-  "j",
-  "2",
-];
+// let letters = [
+//   "a",
+//   "b",
+//   "c",
+//   "d",
+//   "e",
+//   "f",
+//   "g",
+//   "h",
+//   "i",
+//   "j",
+//   "k",
+//   "l",
+//   "m",
+//   "n",
+//   "o",
+//   "p",
+//   "q",
+//   "r",
+//   "s",
+//   "t",
+//   "u",
+//   "v",
+//   "w",
+//   "x",
+//   "y",
+//   "z",
+// ];
+// let leetChars = [
+//   "@",
+//   "8",
+//   "(",
+//   "|)",
+//   "3",
+//   "ph",
+//   "g",
+//   "#",
+//   "l",
+//   "_|",
+//   "|<",
+//   "1",
+//   "|'|'|",
+//   "//",
+//   "0",
+//   "|D",
+//   "(,)",
+//   "|2",
+//   "5",
+//   "+",
+//   "|_|",
+//   "|/",
+//   "|/|/'",
+//   "><",
+//   "j",
+//   "2",
+// ];
 
 //declare an empty object
 //iterate through letters
@@ -151,47 +151,47 @@ let leetChars = [
 
 // Pet Sounds
 
-let animalNoises = [
-  {
-    dog: {
-      America: "Woof! Woof!",
-      Germany: "Wau Wau!",
-      England: "Bow wow!",
-      Uruguay: "Jua jua!",
-      Afrikaans: "Blaf!",
-      Korea: "Mong mong!",
-      Iceland: "Voff voff!",
-      Albania: "Ham!",
-      Algeria: "Ouaf ouaf!",
-    },
-  },
-  {
-    cat: {
-      America: "Meow",
-      Germany: "Miauw!",
-      England: "mew mew",
-      Uruguay: "Miau Miau!",
-      Afrikaans: "Purr",
-      Korea: "Nyaong!",
-      Iceland: "Kurnau!",
-      Albania: "Miau",
-      Algeria: "Miaou!",
-    },
-  },
-  {
-    chicken: {
-      America: "Cluck cluck",
-      Germany: "tock tock tock",
-      England: "Cluck Cluck",
-      Uruguay: "gut gut gdak",
-      Afrikaans: "kukeleku",
-      Korea: "ko-ko-ko",
-      Iceland: "Chuck-chuck!",
-      Albania: "Kotkot",
-      Algeria: "Cotcotcodet",
-    },
-  },
-];
+// let animalNoises = [
+//   {
+//     dog: {
+//       America: "Woof! Woof!",
+//       Germany: "Wau Wau!",
+//       England: "Bow wow!",
+//       Uruguay: "Jua jua!",
+//       Afrikaans: "Blaf!",
+//       Korea: "Mong mong!",
+//       Iceland: "Voff voff!",
+//       Albania: "Ham!",
+//       Algeria: "Ouaf ouaf!",
+//     },
+//   },
+//   {
+//     cat: {
+//       America: "Meow",
+//       Germany: "Miauw!",
+//       England: "mew mew",
+//       Uruguay: "Miau Miau!",
+//       Afrikaans: "Purr",
+//       Korea: "Nyaong!",
+//       Iceland: "Kurnau!",
+//       Albania: "Miau",
+//       Algeria: "Miaou!",
+//     },
+//   },
+//   {
+//     chicken: {
+//       America: "Cluck cluck",
+//       Germany: "tock tock tock",
+//       England: "Cluck Cluck",
+//       Uruguay: "gut gut gdak",
+//       Afrikaans: "kukeleku",
+//       Korea: "ko-ko-ko",
+//       Iceland: "Chuck-chuck!",
+//       Albania: "Kotkot",
+//       Algeria: "Cotcotcodet",
+//     },
+//   },
+// ];
 
 // Write a function petSounds that takes an animal name and a country name as arguments.
 // Using the globally-defined animalNoises array, petSounds should return a sentence that explains which sound the animal makes in the given country.
@@ -229,17 +229,121 @@ let animalNoises = [
 //add the elements of the string into the object as keys.
 //increment if present
 
-const frequencyAnalysis = (str) => {
-  str = str.toLowerCase();
-  const obj = {};
-  for (let i = 0; i < str.length; i++) {
-    if (!(str[i] in obj)) {
-      obj[str[i]] = 1;
-    } else {
-      obj[str[i]]++;
+// const frequencyAnalysis = (str) => {
+//   str = str.toLowerCase();
+//   const obj = {};
+//   for (let i = 0; i < str.length; i++) {
+//     if (!(str[i] in obj)) {
+//       obj[str[i]] = 1;
+//     } else {
+//       obj[str[i]]++;
+//     }
+//   }
+//   return obj;
+// };
+
+// console.log(frequencyAnalysis("abca")); // => {a: 2, b: 1, c: 1}
+
+// Dog Breeder
+// Define a function, dogBreeder, that accepts up to two optional arguments:
+
+// name (string)
+// age (number)
+// dogBreeder should return an object that represents a new dog! If the user doesn't define a name, assume the dog's name is 'Steve'. If the user doesn't define the dog's age, assume the dog's age is 0.
+
+//returning an obj - can use constructor or establish an empty obj and assign values to it, then return the obj.
+//default parameters
+//edge case: when only age is present...what to do about the name?
+
+// const dogBreeder = (name = "Steve", age = 0) => {
+//   if (typeof name === "number") {
+//     age = name;
+//     name = "Steve";
+//   }
+
+//   let obj = {
+//     name: name,
+//     age: age,
+//   };
+
+//   return obj;
+// };
+
+// console.log(dogBreeder("Sam", 12)); // => {name: 'Sam', age: 12}
+
+// console.log(dogBreeder(15)); // => {name:'Steve', age: 15}
+
+// Attendance Check
+// Define a function, attendanceCheck, that accepts a string argument corresponding to a day of the week.
+
+// Using the globally-defined classRoom array, attendanceCheck should return a new array with only the names of the students present on the inputted day of the week.
+//input: string - day of the week;
+//output: array - of names
+//notes: returns NEW array.
+//gameplan: how to extract deeply nested objects?
+//based on the input string, pull every obj's info for that date, maybe push it to an array, then iterate through and pull out true booleans and return the names?
+//iterate through the inner most array to search for any true booleans.
+
+let classRoom = [
+  {
+    Marnie: [
+      { Monday: true },
+      { Tuesday: true },
+      { Wednesday: true },
+      { Thursday: true },
+      { Friday: true },
+    ],
+  },
+  {
+    Lena: [
+      { Monday: false },
+      { Tuesday: false },
+      { Wednesday: true },
+      { Thursday: false },
+      { Friday: true },
+    ],
+  },
+  {
+    Shoshanna: [
+      { Monday: true },
+      { Tuesday: true },
+      { Wednesday: false },
+      { Thursday: true },
+      { Friday: false },
+    ],
+  },
+  {
+    Jessa: [
+      { Monday: false },
+      { Tuesday: false },
+      { Wednesday: false },
+      { Thursday: false },
+      { Friday: true },
+    ],
+  },
+];
+
+function attendanceCheck(dayOfWeek) {
+  let wasPresent = [];
+  for (let i = 0; i < classRoom.length; i++) {
+    const studentObj = classRoom[i];
+    const studentName = Object.keys(studentObj)[0];
+    const studentSchedule = studentObj[studentName];
+
+    for (let j = 0; j < studentSchedule.length; j++) {
+      const dayObj = studentSchedule[j];
+      const dayName = Object.keys(dayObj)[0];
+
+      if (dayName === dayOfWeek && dayObj[dayName]) {
+        wasPresent.push(studentName);
+      }
     }
   }
-  return obj;
-};
+  return wasPresent;
+}
 
-console.log(frequencyAnalysis("abca")); // => {a: 2, b: 1, c: 1}
+// console.log(classRoom[0]["Marnie"]);
+//for loop to iterate through the people
+//OR EXTRACT EACH OBJECT into it's own array??
+console.log(attendanceCheck("Monday"));
+console.log(attendanceCheck("Wednesday"));
