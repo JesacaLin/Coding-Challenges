@@ -284,66 +284,219 @@
 //based on the input string, pull every obj's info for that date, maybe push it to an array, then iterate through and pull out true booleans and return the names?
 //iterate through the inner most array to search for any true booleans.
 
-let classRoom = [
-  {
-    Marnie: [
-      { Monday: true },
-      { Tuesday: true },
-      { Wednesday: true },
-      { Thursday: true },
-      { Friday: true },
-    ],
-  },
-  {
-    Lena: [
-      { Monday: false },
-      { Tuesday: false },
-      { Wednesday: true },
-      { Thursday: false },
-      { Friday: true },
-    ],
-  },
-  {
-    Shoshanna: [
-      { Monday: true },
-      { Tuesday: true },
-      { Wednesday: false },
-      { Thursday: true },
-      { Friday: false },
-    ],
-  },
-  {
-    Jessa: [
-      { Monday: false },
-      { Tuesday: false },
-      { Wednesday: false },
-      { Thursday: false },
-      { Friday: true },
-    ],
-  },
+// let classRoom = [
+//   {
+//     Marnie: [
+//       { Monday: true },
+//       { Tuesday: true },
+//       { Wednesday: true },
+//       { Thursday: true },
+//       { Friday: true },
+//     ],
+//   },
+//   {
+//     Lena: [
+//       { Monday: false },
+//       { Tuesday: false },
+//       { Wednesday: true },
+//       { Thursday: false },
+//       { Friday: true },
+//     ],
+//   },
+//   {
+//     Shoshanna: [
+//       { Monday: true },
+//       { Tuesday: true },
+//       { Wednesday: false },
+//       { Thursday: true },
+//       { Friday: false },
+//     ],
+//   },
+//   {
+//     Jessa: [
+//       { Monday: false },
+//       { Tuesday: false },
+//       { Wednesday: false },
+//       { Thursday: false },
+//       { Friday: true },
+//     ],
+//   },
+// ];
+
+// function attendanceCheck(dayOfWeek) {
+//   let wasPresent = [];
+//   for (let i = 0; i < classRoom.length; i++) {
+//     const studentObj = classRoom[i];
+//     const studentName = Object.keys(studentObj)[0];
+//     const studentSchedule = studentObj[studentName];
+
+//     for (let j = 0; j < studentSchedule.length; j++) {
+//       const dayObj = studentSchedule[j];
+//       const dayName = Object.keys(dayObj)[0];
+
+//       if (dayName === dayOfWeek && dayObj[dayName]) {
+//         wasPresent.push(studentName);
+//       }
+//     }
+//   }
+//   return wasPresent;
+// }
+
+// // console.log(classRoom[0]["Marnie"]);
+// //for loop to iterate through the people
+// //OR EXTRACT EACH OBJECT into it's own array??
+// console.log(attendanceCheck("Monday"));
+// console.log(attendanceCheck("Wednesday"));
+
+//LOOK - ROUND TWO
+//iterate through the array of transactions
+//create variable to store the amount.
+//pulling out the value of amount key
+
+//input: array of objects
+//output: interger, sum of amount
+
+// let transactions = [
+//   {
+//     name: "Tons of glitter",
+//     amount: 70
+//   },
+//   {
+//     name: "Porcelain Pink Flamingos",
+//     amount: 92
+//   },
+//   {
+//     name: "Chandelier replacement",
+//     amount: 10000,
+//   },
+//   {
+//     name: "Dinner at TGIF x6",
+//     amount: 350
+//   }
+// ];
+
+// const lastFridayNight = (trans) =>{
+//   let total = 0
+//   for(let i = 0; i < trans.length; i++){
+//     const currentTrans = trans[i]
+//     total += currentTrans.amount
+//   }
+//   return total;
+// }
+
+// console.log(lastFridayNight(transactions)) // => 10512);
+
+//handle edge cases of objs having different number of keys.
+//iterate through the objs
+//compare the values of each key.
+
+// const compareObjects = (obj1, obj2) =>{
+//   //how to find number of keys in an obj?
+//   if(Object.keys(obj1).length !== Object.keys(obj2).length){
+//     return false
+//   };
+
+//   for(let key in obj1){
+//     if(obj1[key] !== obj2[key]){
+//       return false
+//     }
+//   }
+//   return true;
+// }
+
+// console.log(compareObjects({ name: 'nick' }, { name: 'nick' }));
+
+// console.log(compareObjects({ name: 'zeke' }, { name: 'zeke', age: 12 }));
+
+//build a leetCodex obj, might not need a constructor since I"m only doing pairs.
+//iterate thorugh letters and push each pair to the obj
+//declare a variable to hold the new translated string
+//translate by iterating through the string
+//declare a variable to hold the current letter
+//iterate through the keys of the leetcodex
+//if matches, push the value to the new string
+//return string
+
+let letters = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
 ];
 
-function attendanceCheck(dayOfWeek) {
-  let wasPresent = [];
-  for (let i = 0; i < classRoom.length; i++) {
-    const studentObj = classRoom[i];
-    const studentName = Object.keys(studentObj)[0];
-    const studentSchedule = studentObj[studentName];
+let leetChars = [
+  "@",
+  "8",
+  "(",
+  "|)",
+  "3",
+  "ph",
+  "g",
+  "#",
+  "l",
+  "_|",
+  "|<",
+  "1",
+  "|'|'|",
+  "//",
+  "0",
+  "|D",
+  "(,)",
+  "|2",
+  "5",
+  "+",
+  "|_|",
+  "|/",
+  "|/|/'",
+  "><",
+  "j",
+  "2",
+];
 
-    for (let j = 0; j < studentSchedule.length; j++) {
-      const dayObj = studentSchedule[j];
-      const dayName = Object.keys(dayObj)[0];
+const leetTranslator = (str) => {
+  let leetCodex = {};
+  for (let i = 0; i < letters.length; i++) {
+    let currentLetter = letters[i];
+    let currentLeetChar = leetChars[i];
+    leetCodex[currentLetter] = currentLeetChar;
+  }
 
-      if (dayName === dayOfWeek && dayObj[dayName]) {
-        wasPresent.push(studentName);
-      }
+  let translation = "";
+  //translate
+  for (let i = 0; i < str.length; i++) {
+    let currentChar = str[i].toLowerCase();
+    let leetChar = leetCodex[currentChar];
+    // If the current character is not a letter, use the original character
+    if (leetChar === undefined) {
+      translation += currentChar;
+    } else {
+      translation += leetChar;
     }
   }
-  return wasPresent;
-}
+  return translation;
+};
 
-// console.log(classRoom[0]["Marnie"]);
-//for loop to iterate through the people
-//OR EXTRACT EACH OBJECT into it's own array??
-console.log(attendanceCheck("Monday"));
-console.log(attendanceCheck("Wednesday"));
+console.log(leetTranslator("Fullstack"));
+console.log(leetTranslator("#0|D|D3|2"));
