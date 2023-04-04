@@ -65,3 +65,87 @@ The fibonacci sequence is a sequence of numbers whose first and second elements 
 // }
 
 // console.log(caesarCipher("apple", 1));
+
+//TRY THIS AGAIN - TODO
+// removeFromString
+// Write a function called removeFromString, which accepts a string, a starting index (number) and a number of characters to remove.
+
+// The function should return a new string with the characters removed.
+
+// Examples:
+
+// removeFromString('Elie', 2, 2) // 'El'
+// removeFromString('Elie', 0, 1) // 'lie'
+// removeFromString('Rithm School', 0, 6) // 'School'
+// removeFromString('Rithm School', 2, 4) // 'RiSchool'
+// removeFromString('Rithm School', 6, 400) // 'Rithm '
+
+// let x = [1, 2, 3];
+// let y = x.map((num) => {
+//   x.push(num + 3);
+//   //x:
+//   //[1, 2, 3, 4, 5, 6]
+//   return num + 1;
+//   //y:
+//   //[2, 3, 4]
+// });
+
+// var data = {
+//   code: 42,
+//   items: [
+//     {
+//       id: 1,
+//       name: "foo",
+//     },
+//     {
+//       id: 2,
+//       name: "bar",
+//     },
+//   ],
+// };
+
+// const nestedArray = data.items[1].name;
+// console.log(nestedArray);
+
+// Challenge: Arrays Equivalent? Arrays Equal?
+// Given two arrays that contain only numbers, are they “equivalent”?
+//(equivalent: do they contain the exact same items, in the same order)
+
+//rephrase: take two arrays and check if they are equivalent, same values at the same indices.
+
+//input: two arrays
+//output: boolean value
+
+//test for edge cases - fail fast by compare lengths
+//iterate to compare values
+//does not have to be nested...can use bracket notation
+//if values do not match, return false
+//if at the end of iterating, all values have matched, return true;
+
+const a = [1, 2, 3];
+const b = [1, 2, 3];
+const c = [1, 2, 2, 3];
+const d = [2, 1, 3];
+
+const arraysEquivalent = (arr1, arr2) => {
+  if (arr1.length !== arr2.length) return false;
+  //using for loop:
+  // for(let i = 0; i < arr1.length; i++){
+  //     if (arr1[i] !== arr2[i]) return false;
+  //     return true;
+  // }
+
+  //using for...of loop:
+  for (const [index, num] of arr1.entries()) {
+    if (num !== arr2[index]) return false;
+  }
+  return true;
+};
+
+console.log(arraysEquivalent(a, b));
+console.log(arraysEquivalent(a, c));
+console.log(arraysEquivalent(a, d));
+
+// a and b are equiv
+// a and c are not
+// a and d are not
