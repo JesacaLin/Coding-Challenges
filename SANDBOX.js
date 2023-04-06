@@ -111,41 +111,89 @@ The fibonacci sequence is a sequence of numbers whose first and second elements 
 // Given two arrays that contain only numbers, are they “equivalent”?
 //(equivalent: do they contain the exact same items, in the same order)
 
-//rephrase: take two arrays and check if they are equivalent, same values at the same indices.
+//rephrase: take two number arrays and check if they are equivalent, meaning: same values at the same indices.
 
 //input: two arrays
 //output: boolean value
 
+//pseudocode
 //test for edge cases - fail fast by compare lengths
 //iterate to compare values
 //does not have to be nested...can use bracket notation
 //if values do not match, return false
 //if at the end of iterating, all values have matched, return true;
 
-const a = [1, 2, 3];
-const b = [1, 2, 3];
-const c = [1, 2, 2, 3];
-const d = [2, 1, 3];
+// const a = [1, 2, 3];
+// const b = [1, 2, 3];
+// const c = [1, 2, 2, 3];
+// const d = [2, 1, 3];
 
-const arraysEquivalent = (arr1, arr2) => {
-  if (arr1.length !== arr2.length) return false;
-  //using for loop:
-  // for(let i = 0; i < arr1.length; i++){
-  //     if (arr1[i] !== arr2[i]) return false;
-  //     return true;
-  // }
+// const arraysEquivalent = (arr1, arr2) => {
+//   if (arr1.length !== arr2.length) return false;
+//   //using for loop:
+//   // for(let i = 0; i < arr1.length; i++){
+//   //     if (arr1[i] !== arr2[i]) return false;
+//   //     return true;
+//   // }
 
-  //using for...of loop:
-  for (const [index, num] of arr1.entries()) {
-    if (num !== arr2[index]) return false;
+//   //using for...of loop and deconstructuring:
+//   for (const [index, num] of arr1.entries()) {
+//     if (num !== arr2[index]) return false;
+//   }
+//   return true;
+// };
+
+// console.log(arraysEquivalent(a, b)); // true
+// console.log(arraysEquivalent(a, c)); // false
+// console.log(arraysEquivalent(a, d)); // false
+
+// Challenge: Sort Sorted Lists
+// Given two already-sorted lists, return new list of all elements, sorted. But not using the .sort() method
+
+//Given two already-sorted lists, return new list of all elements, sorted. But not using the .sort() method.
+
+//rephrase: I want to take the first list, compare each item in that first list to items in the 2nd list. the elements in the 2nd list will either go before or after the comparison item. if there are left over elements, they get pushed to the end of the new array.
+
+//pseudocode
+//initialize new variable to hold new array and counters for i and j.
+//iterate through the first array and compare those elements to the 2nd array.
+//if less than current element, push this element to the array.
+//if more, THEN push to array
+//possible edge: arrays of different lengths.
+//push the rest of the elements to the new array depedning on which array
+//return new array;
+
+const arr1 = [2, 3, 6, 10, 11, 12];
+const arr2 = [1, 3, 6];
+
+const alreadySorted = () => {
+  const newArray = [];
+
+  let i = 0;
+  let j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] <= arr2[j]) {
+      newArray.push(arr1[i]);
+      i++;
+    } else {
+      newArray.push(arr2[j]);
+      j++;
+    }
   }
-  return true;
+
+  while (j < arr2.length) {
+    newArray.push(arr2[j]);
+    j++;
+  }
+
+  while (i < arr1.length) {
+    newArray.push(arr1[i]);
+    i++;
+  }
+
+  return newArray;
 };
 
-console.log(arraysEquivalent(a, b));
-console.log(arraysEquivalent(a, c));
-console.log(arraysEquivalent(a, d));
-
-// a and b are equiv
-// a and c are not
-// a and d are not
+console.log(alreadySorted());
+//[1, 2, 3, 6, 6, 10, 11]
