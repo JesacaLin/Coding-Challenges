@@ -417,86 +417,180 @@
 //if matches, push the value to the new string
 //return string
 
-let letters = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
+// let letters = [
+//   "a",
+//   "b",
+//   "c",
+//   "d",
+//   "e",
+//   "f",
+//   "g",
+//   "h",
+//   "i",
+//   "j",
+//   "k",
+//   "l",
+//   "m",
+//   "n",
+//   "o",
+//   "p",
+//   "q",
+//   "r",
+//   "s",
+//   "t",
+//   "u",
+//   "v",
+//   "w",
+//   "x",
+//   "y",
+//   "z",
+// ];
 
-let leetChars = [
-  "@",
-  "8",
-  "(",
-  "|)",
-  "3",
-  "ph",
-  "g",
-  "#",
-  "l",
-  "_|",
-  "|<",
-  "1",
-  "|'|'|",
-  "//",
-  "0",
-  "|D",
-  "(,)",
-  "|2",
-  "5",
-  "+",
-  "|_|",
-  "|/",
-  "|/|/'",
-  "><",
-  "j",
-  "2",
-];
+// let leetChars = [
+//   "@",
+//   "8",
+//   "(",
+//   "|)",
+//   "3",
+//   "ph",
+//   "g",
+//   "#",
+//   "l",
+//   "_|",
+//   "|<",
+//   "1",
+//   "|'|'|",
+//   "//",
+//   "0",
+//   "|D",
+//   "(,)",
+//   "|2",
+//   "5",
+//   "+",
+//   "|_|",
+//   "|/",
+//   "|/|/'",
+//   "><",
+//   "j",
+//   "2",
+// ];
 
-const leetTranslator = (str) => {
-  let leetCodex = {};
-  for (let i = 0; i < letters.length; i++) {
-    let currentLetter = letters[i];
-    let currentLeetChar = leetChars[i];
-    leetCodex[currentLetter] = currentLeetChar;
+// const leetTranslator = (str) => {
+//   let leetCodex = {};
+//   for (let i = 0; i < letters.length; i++) {
+//     let currentLetter = letters[i];
+//     let currentLeetChar = leetChars[i];
+//     leetCodex[currentLetter] = currentLeetChar;
+//   }
+
+//   let translation = "";
+//   //translate
+//   for (let i = 0; i < str.length; i++) {
+//     let currentChar = str[i].toLowerCase();
+//     let leetChar = leetCodex[currentChar];
+//     // If the current character is not a letter, use the original character
+//     if (leetChar === undefined) {
+//       translation += currentChar;
+//     } else {
+//       translation += leetChar;
+//     }
+//   }
+//   return translation;
+// };
+
+// console.log(leetTranslator("Fullstack"));
+// console.log(leetTranslator("#0|D|D3|2"));
+
+// let animalNoises = [
+//   { 'dog': {
+//     'America' : 'Woof! Woof!',
+//     'Germany' : 'Wau Wau!',
+//     'England' : 'Bow wow!',
+//     'Uruguay' : 'Jua jua!',
+//     'Afrikaans' : 'Blaf!',
+//     'Korea' : 'Mong mong!',
+//     'Iceland' : 'Voff voff!',
+//     'Albania' : 'Ham!',
+//     'Algeria' : 'Ouaf ouaf!'
+//     }
+//   },
+//   { 'cat': {
+//     'America' : 'Meow',
+//     'Germany' : 'Miauw!',
+//     'England' : 'mew mew',
+//     'Uruguay' : 'Miau Miau!',
+//     'Afrikaans' : 'Purr',
+//     'Korea' : 'Nyaong!',
+//     'Iceland' : 'Kurnau!',
+//     'Albania' : 'Miau',
+//     'Algeria' : 'Miaou!'
+//     }
+//   },
+//   { 'chicken': {
+//     'America' : 'Cluck cluck',
+//     'Germany' : 'tock tock tock',
+//     'England' : 'Cluck Cluck',
+//     'Uruguay' : 'gut gut gdak',
+//     'Afrikaans' : 'kukeleku',
+//     'Korea' : 'ko-ko-ko',
+//     'Iceland' : 'Chuck-chuck!',
+//     'Albania' : 'Kotkot',
+//     'Algeria' : 'Cotcotcodet'
+//     }
+//   }
+// ];
+
+// function petSounds(name, country){
+//   for (let i = 0; i < animalNoises.length; i++){
+//     let currentAnimal = animalNoises[i];
+//     if(name in currentAnimal){
+//       let countrySounds = currentAnimal[name];
+//       let noise = countrySounds[country];
+//       name = name[0].toUpperCase() + name.slice(1);
+//       return  `${name}s in ${country} say ${noise}`
+//     }
+//   }
+// };
+
+// console.log(petSounds('dog', 'Iceland')); // => Dogs in Iceland say Voff voff!
+
+// console.log(petSounds('cat', 'Korea')); // => Cats in Korea say Nyaong!
+
+// Frequency Analysis
+// Define a function frequencyAnalysis that accepts a string of lower-case letters as an argument.
+
+// frequencyAnalysis should return an object containing the amount of times each letter appeared in the string.
+
+// function frequencyAnalysis(str) {
+//   const obj = {};
+//   for (let i = 0; i < str.length; i++) {
+//     if (obj[str[i]]) {
+//       obj[str[i]]++;
+//     } else{
+//       obj[str[i]] = 1;
+//     }
+//   }
+//   // for (const key in obj){
+
+//   // }
+//   return obj;
+// }
+
+// console.log(frequencyAnalysis("abca")); // => {a: 2, b: 1, c: 1}
+
+function dogBreeder(name, age = 0) {
+  if (typeof name === "number") {
+    age = name;
+    name = "Steve";
   }
 
-  let translation = "";
-  //translate
-  for (let i = 0; i < str.length; i++) {
-    let currentChar = str[i].toLowerCase();
-    let leetChar = leetCodex[currentChar];
-    // If the current character is not a letter, use the original character
-    if (leetChar === undefined) {
-      translation += currentChar;
-    } else {
-      translation += leetChar;
-    }
-  }
-  return translation;
-};
+  const obj = {
+    name: name,
+    age: age,
+  };
 
-console.log(leetTranslator("Fullstack"));
-console.log(leetTranslator("#0|D|D3|2"));
+  return obj;
+}
+console.log(dogBreeder("Sam", 12));
+console.log(dogBreeder(15));
+console.log(dogBreeder("Bobby"));
