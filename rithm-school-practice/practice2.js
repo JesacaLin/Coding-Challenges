@@ -157,6 +157,7 @@
 
 //take the key/value pairs within an obj and switch it.
 
+//check that key value exists
 //create variables to hold the keys and values;
 //reassign them
 
@@ -166,8 +167,55 @@ capitalsToStates = {
   Trenton: "NJ",
 };
 
+const invertObject = (obj) => {
+  const newObj = {};
+  for (const key in obj) {
+    const newValue = obj[key];
+    newObj[newValue] = key;
+  }
+  return newObj;
+};
+invertObject(capitalsToStates);
+
 // statesToCapitals = {
 //   "MD": "Annapolis",
 //   "CA": "Sacramento",
 //   "NJ": "Trenton",
 // }
+
+// Write a version that works where a state can have many cities:
+
+//initialize new obj;
+//iterate thorugh the obj
+//check if keys exists in the newObj.
+//if yes, push the value to the array?
+//if not, create the key value pair in newObj.
+//return new object.
+
+cities = {
+  Annapolis: "MD",
+  Baltimore: "MD",
+  Trenton: "NJ",
+};
+
+// console.log(statesTocitiesArrays(cities));
+const statesTocitiesArrays = (obj) => {
+  const newObj = {};
+  for (const city in obj) {
+    const state = obj[city];
+    if (state in newObj) {
+      newObj[state].push(city);
+    } else {
+      newObj[state] = [city];
+    }
+  }
+  return newObj;
+};
+
+console.log(statesTocitiesArrays(cities));
+
+// return an object the swaps the keys and values:
+// statesToCities = {
+//   "MD": ["Annapolis", "Baltimore"],
+//   "NJ": ["Trenton"],
+// };

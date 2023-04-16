@@ -578,19 +578,141 @@
 
 // console.log(frequencyAnalysis("abca")); // => {a: 2, b: 1, c: 1}
 
-function dogBreeder(name, age = 0) {
-  if (typeof name === "number") {
-    age = name;
-    name = "Steve";
+// function dogBreeder(name, age = 0) {
+//   if (typeof name === "number") {
+//     age = name;
+//     name = "Steve";
+//   }
+
+//   const obj = {
+//     name: name,
+//     age: age,
+//   };
+
+//   return obj;
+// }
+// console.log(dogBreeder("Sam", 12));
+// console.log(dogBreeder(15));
+// console.log(dogBreeder("Bobby"));
+
+/*
+let classRoom = [
+  {
+    Marnie: [
+      { Monday: true },
+      { Tuesday: true },
+      { Wednesday: true },
+      { Thursday: true },
+      { Friday: true },
+    ],
+  },
+  {
+    Lena: [
+      { Monday: false },
+      { Tuesday: false },
+      { Wednesday: true },
+      { Thursday: false },
+      { Friday: true },
+    ],
+  },
+  {
+    Shoshanna: [
+      { Monday: true },
+      { Tuesday: true },
+      { Wednesday: false },
+      { Thursday: true },
+      { Friday: false },
+    ],
+  },
+  {
+    Jessa: [
+      { Monday: false },
+      { Tuesday: false },
+      { Wednesday: false },
+      { Thursday: false },
+      { Friday: true },
+    ],
+  },
+];
+//OPTIMIZED WAY
+// const attendanceCheck = (day) => {
+//   const names = classRoom
+//     .filter((person) => {
+//       const attendance = person[Object.keys(person)[0]];
+//       return attendance.some((a) => a[day]);
+//     })
+//     .map((person) => Object.keys(person)[0]);
+
+//   return names;
+// };
+
+//input: string of day of the week
+//output: new array, names corrasponding to input
+
+//look inside each person's obj, if the day of the week is true, add that person's name to the array.
+
+//create a names array;
+//interate through the names in the first round;
+//initialize variable to store the current name;
+//interate through the days of the week in the second round;
+//initialize variable to store current day of the week and boolean;
+//if day of the week matches 'day' AND value of the day of the week is 'true';
+//push name variable to the array;
+//return names array;
+
+//MY WAY
+// const attendanceCheck = (day) =>{
+//   const names = [];
+//   for (const classroomArray of classRoom){
+//     for (const person in classroomArray){
+//       let currentName = person;
+//       let daysOfTheWeekArray = classroomArray[person];
+//       for (const daysOfTheWeek of daysOfTheWeekArray){
+//         let currentDay = Object.keys(daysOfTheWeek);
+//         let currentBoolean = Object.values(daysOfTheWeek);
+//         if(currentDay.includes(day) && currentBoolean.includes(true)){
+//           names.push(currentName)
+//         }
+//       }
+//     }
+//   }
+//   return names;
+// };
+console.log(attendanceCheck("Monday"));
+//['Marnie', 'Shoshanna']
+console.log(attendanceCheck("Wednesday"));
+//['Marnie', 'Lena']
+*/
+
+// Call Them All
+// Define a function, callThemAll, that accepts an object, object, and a value, value.
+
+// callThemAll should call every method in the object, passing in the value as the argument with each call.
+
+// callThemAll should return an array with all of the returned values from each method invocation. The order of the elements in the returned array does not matter.
+
+let addNums = {
+  addTen: function (num) {
+    return num + 10;
+  },
+
+  addTwenty: function (num) {
+    return num + 20;
+  },
+
+  someProperty: "value",
+};
+
+const callThemAll = function (obj, value) {
+  const resultsArray = [];
+  for (let key in obj) {
+    let currentMethod = obj[key];
+    if (typeof currentMethod === "function") {
+      let result = currentMethod(value);
+      resultsArray.push(result);
+    }
   }
+  return resultsArray;
+};
 
-  const obj = {
-    name: name,
-    age: age,
-  };
-
-  return obj;
-}
-console.log(dogBreeder("Sam", 12));
-console.log(dogBreeder(15));
-console.log(dogBreeder("Bobby"));
+console.log(callThemAll(addNums, 100)); // => [110, 120]
