@@ -203,3 +203,90 @@
 // // Function complete
 
 // console.log(squareOfFour) // 16
+
+// Finder Function
+// Define a function finderFunction that accepts an array and a callback function as arguments. finderFunction should pass each element from the array into the callback function.
+
+// If the callback returns true for any of the elements in the array, return the index of the current element. If the callback never returns true, return -1;
+
+// let numbers = [1, 3, 5, 64, 7, 12];
+// let odds = [9, 13, 15, 17];
+
+// const finderFunction = function (arr, callback) {
+//   for (let i = 0; i < arr.length; i++) {
+//     let result = callback(arr[i]);
+//     if (result === true) return i;
+//   }
+//   return -1;
+// };
+
+// function isEven(num) {
+//   return !(num % 2);
+// }
+
+// console.log(finderFunction(numbers, isEven)); // 3
+// console.log(finderFunction(odds, isEven)); // -1
+
+// My ForEach
+// Write a function myForEach that accepts an array and a callback function as arguments. The behavior of myForEach should mirror the functionality of the native .forEach() array method as closely as possible.
+
+// let sum = 0;
+
+// function addToSum(num) {
+//   sum += num;
+// }
+
+// let nums = [1, 2, 3];
+
+// function myForEach(arr, callback) {
+//   for (let [index, value] of arr.entries()) {
+//     callback(value, index);
+//   }
+// }
+
+// myForEach(nums, addToSum);
+
+// console.log(sum); // 6
+
+// Chain Reaction
+// Define a function, chainReaction, that accepts 2 arguments:
+
+// 1) a starting value
+
+// 2) an array of functions
+
+// chainReaction should pass the starting value into the first function in the array. It should pass the value returned by the first function as an argument into the second function, and so on until every function in the array is called.
+
+// chainReaction should return the final value returned by the final function in the array.
+
+//iterate through the array of funcs
+//1st iteration: pass starting value to funct at index 0;
+//update the starting value;
+//2nd iteration: pass new starting value into 2nd func
+//update the starting value;
+//3rd iteration: pass the starting value into 3rd func
+//update the starting value;
+//return starting value;
+
+function chainReaction(startingValue, arrOfFunctions) {
+  for (let i = 0; i < arrOfFunctions.length; i++) {
+    let currentFunction = arrOfFunctions[i];
+    startingValue = currentFunction(startingValue);
+  }
+  return startingValue;
+}
+
+function addTen(num) {
+  return num + 10;
+}
+
+function subtractFive(num) {
+  return num - 5;
+}
+
+function multiplyFive(num) {
+  return num * 5;
+}
+
+console.log(chainReaction(0, [addTen, subtractFive, multiplyFive])); // => 25
+console.log(chainReaction(0, [subtractFive, multiplyFive, addTen])); // => -15
