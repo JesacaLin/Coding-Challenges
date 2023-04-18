@@ -42,27 +42,164 @@
 
 // cloneMachine should also push the name of the clone to the parent's offspring array.
 
-let dolly = {
-  name: "Dolly",
-  species: "sheep",
-  offspring: [],
-};
+// let dolly = {
+//   name: "Dolly",
+//   species: "sheep",
+//   offspring: [],
+// };
 
-function cloneMachine(animalObj) {
-  const clone = {
-    name: `${animalObj.name}Clone`,
-    species: animalObj.species,
-    offspring: [],
-  };
+// function cloneMachine(animalObj) {
+//   const clone = {
+//     name: `${animalObj.name}Clone`,
+//     species: animalObj.species,
+//     offspring: [],
+//   };
 
-  animalObj.offspring.push(clone.name);
+//   animalObj.offspring.push(clone.name);
 
-  return clone;
-}
+//   return clone;
+// }
 
-let dollyClone = cloneMachine(dolly);
+// let dollyClone = cloneMachine(dolly);
 
-console.log(dollyClone);
-// {name: 'DollyClone', species: 'sheep', offspring: []}
-console.log(dolly);
-// {name: 'Dolly', species: 'sheep', offspring: ['DollyClone']}
+// console.log(dollyClone);
+// // {name: 'DollyClone', species: 'sheep', offspring: []}
+// console.log(dolly);
+// // {name: 'Dolly', species: 'sheep', offspring: ['DollyClone']}
+
+// My Splice
+// Write a mySplice function that mirrors the behavior of JavaScript's .splice() array method. However, mySplice should accept the array to operate on as an argument, rather than being invoked as a method on that array.
+
+// mySplice only needs to take one element to add to the array (the .splice method can actually take any number of values to add).
+
+// Do not use .splice in your function.
+
+//iterate through the array
+//at the index given, replace with the value.
+//add remaining value
+
+// let myArray = [1, 2, 3];
+// let funNums = [10, 20, 30, 40, 50, 60];
+
+// function mySplice(array, startIndex, deleteCount, newValue) {
+//   const removedElements = array.slice(startIndex, startIndex + deleteCount);
+//   const keptElements = array
+//     .slice(0, startIndex)
+//     .concat(
+//       newValue !== undefined ? [newValue] : [],
+//       array.slice(startIndex + deleteCount)
+//     );
+
+//   array.length = 0;
+//   array.push(...keptElements);
+
+//   return removedElements;
+// }
+
+// console.log(mySplice(myArray, 1, 1, "apples")); // => [2]
+// console.log(myArray);
+
+// console.log(mySplice(funNums, 2, 3));
+// console.log(funNums);
+//[10, 20, 60]
+
+// Reverse Array
+// Write a function, reverse, that accepts an array as an argument, and reverses the array.
+
+// The behavior should mimic the behavior of the native .reverse() array method. However, your reverse function should accept the array to operate on as an argument, rather than being invoked as a method on that array.
+
+// Do not use the native .reverse() method in your own implementation.
+
+//loop the array
+//take current element
+//shift off the array, push to back
+
+//reverse loop through the array
+//take last element, place in front, remove from array
+//take next last element, add to index 1 (++)
+
+//create holder array
+//reverse iterate through the original array and push to new array.
+//clear original array contents
+//push sorted array values to original array with spread operator.
+
+// let myArray = [1, 2, 3, 4];
+
+// function reverseArray(array) {
+//   const helperArray = [];
+//   for (let i = array.length - 1; i >= 0; i--) {
+//     helperArray.push(array[i]);
+//   }
+//   array.length = 0;
+//   array.push(...helperArray);
+//   return array;
+// }
+
+// console.log(reverseArray(myArray));
+// console.log(myArray); // [4, 3, 2, 1]
+
+// Deeper Copy
+// Write a function, deeperCopy, that, unlike .slice, will deeply copy a two-dimensional array.
+
+// let myArray = [1, [2, 3]];
+
+// function deeperCopy (arr){
+//     const clone = [];
+//     for (let i = 0; i < arr.length; i++){
+//         let currentElement = arr[i];
+//         if (Array.isArray(currentElement)){
+//             let nestedArray = [];
+//             for (let j = 0; j < currentElement.length; j++){
+//                 nestedArray.push(currentElement[j]);
+//             };
+//             clone.push(nestedArray);
+//         };
+//         clone.push(currentElement)
+//     };
+//     return clone
+// }
+
+// let copy = deeperCopy(myArray);
+// copy[1].push(4);
+// console.log(myArray); // [1, [2, 3]]
+
+// let copy2 = myArray.slice();
+// copy2[1].push(4);
+
+// console.log(myArray); // [1, [2, 3, 4]]
+
+// Function Logger
+// Define a function functionLogger that accepts 2 arguments:
+
+// 1) func (function) - a function to run
+
+// 2) arg (any type) - a value to pass into func as an argument
+
+// functionLogger should complete the following steps:
+
+// 1) log the message "Function starting"
+
+// 2) invoke the provided function
+
+// 3) log "Function complete"
+
+// 4) return the result of the function call
+
+// Note that the unit tests will check that the correct value is returned; they do not check if you console logged the right values at the right time.
+
+// const functionLogger = function(func, arg){
+//     console.log('Function starting');
+//     const invoked = func(arg);
+//     console.log('Function complete');
+//     return invoked;
+// };
+
+// function squareNum(x) {
+//   return x * x;
+// }
+
+// let squareOfFour = functionLogger(squareNum, 4);
+// // Function starting
+// // Function complete
+
+// console.log(squareOfFour) // 16
