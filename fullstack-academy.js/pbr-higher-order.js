@@ -389,15 +389,45 @@
 // Stringify
 // Define a function, stringify, that takes a callback function as an argument and returns a new function. When the new function is called, it should invoke the callback function, coerce the value returned into a string, and then return that string.
 
-function stringify(callback) {
-  return function () {
-    return callback().toString();
+// function stringify(callback) {
+//   return function () {
+//     return callback().toString();
+//   };
+// }
+
+// function returnsANumber() {
+//   return 100;
+// }
+
+// let newFunction = stringify(returnsANumber);
+// console.log(newFunction()); // => '100'
+
+// Get Dog Breeder
+// Remember the dog breeder question from an earlier workshop? It assumed that the default name for a dog should be 'Steve', and the default age should be 0.
+
+// Define a function, getDogBreeder, that takes a default name and age, and returns a dogBreeder function. The returned dogBreeder function should use the default values defined when dogBreeder was called.
+
+// You can copy over the solution code from the original dogBreeder problem if you'd like.
+
+function getDogBreeder(defaultName, defaultAge) {
+  return function (name, age) {
+    if (typeof name === "number") {
+      age = name;
+      name = defaultName;
+    }
+    return {
+      name: name || defaultName,
+      age: age || defaultAge,
+    };
   };
 }
 
-function returnsANumber() {
-  return 100;
-}
+let puppyFarm = getDogBreeder("Snoopy", 0);
+let rescueShelter = getDogBreeder("Odie", 3);
+let dogBreeder = getDogBreeder("Rufus", 5);
 
-let newFunction = stringify(returnsANumber);
-console.log(newFunction()); // => '100'
+console.log(puppyFarm("Olaf", 3)); // => {name: 'Olaf', age: 3};
+console.log(puppyFarm(2)); // => {name: 'Snoopy', age: 2}
+
+console.log(rescueShelter()); // => {'Odie', 3}
+console.log(dogBreeder(10)); // => {'Rufus', 10}
