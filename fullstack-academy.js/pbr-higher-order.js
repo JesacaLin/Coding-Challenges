@@ -409,25 +409,64 @@
 
 // You can copy over the solution code from the original dogBreeder problem if you'd like.
 
-function getDogBreeder(defaultName, defaultAge) {
-  return function (name, age) {
-    if (typeof name === "number") {
-      age = name;
-      name = defaultName;
+// function getDogBreeder(defaultName, defaultAge) {
+//   return function (name, age) {
+//     if (typeof name === "number") {
+//       age = name;
+//       name = defaultName;
+//     }
+//     return {
+//       name: name || defaultName,
+//       age: age || defaultAge,
+//     };
+//   };
+// }
+
+// let puppyFarm = getDogBreeder("Snoopy", 0);
+// let rescueShelter = getDogBreeder("Odie", 3);
+// let dogBreeder = getDogBreeder("Rufus", 5);
+
+// console.log(puppyFarm("Olaf", 3)); // => {name: 'Olaf', age: 3};
+// console.log(puppyFarm(2)); // => {name: 'Snoopy', age: 2}
+
+// console.log(rescueShelter()); // => {'Odie', 3}
+// console.log(dogBreeder(10)); // => {'Rufus', 10}
+
+// Cache Savings
+// Caching is used in software engineering to temporarily store the result of an "expensive" operation (takes a lot of time or memory). If that result is needed again in the near future, it can be retrieved from the cache instead of calculating it again.
+
+// Write a function, cacheSavings, that takes a callback function (let's call it callback) as an argument and returns a new function that accepts one argument.
+
+//When the new function is called for the first time, it should invoke callback with the argument and save the result of the function call.
+//If the new function is called again with the same argument, the new function should retrieve the stored value instead of invoking callback again!
+
+function cacheSavings(callback) {
+  const cache = {};
+  return function (arg) {
+    if (cache[arg]) {
+      return cache[arg];
+    } else {
+      const value = callback(arg);
+      cache[arg] = value;
+      return value;
     }
-    return {
-      name: name || defaultName,
-      age: age || defaultAge,
-    };
   };
 }
 
-let puppyFarm = getDogBreeder("Snoopy", 0);
-let rescueShelter = getDogBreeder("Odie", 3);
-let dogBreeder = getDogBreeder("Rufus", 5);
+function adds10(num) {
+  let start = Date.now();
+  let end = Date.now();
 
-console.log(puppyFarm("Olaf", 3)); // => {name: 'Olaf', age: 3};
-console.log(puppyFarm(2)); // => {name: 'Snoopy', age: 2}
+  // pause for 3 seconds, to make the function expensive!
+  while (end - start < 3000) {
+    end = Date.now();
+  }
 
-console.log(rescueShelter()); // => {'Odie', 3}
-console.log(dogBreeder(10)); // => {'Rufus', 10}
+  return num + 10;
+}
+
+let cachedAdds10 = cacheSavings(adds10);
+
+console.log(cachedAdds10(20)); // => returns 30, takes 3 seconds!
+console.log(cachedAdds10(0)); // returns 10, takes 3 seconds!
+console.log(cachedAdds10(20)); // => returns 30, takes no time at all!
