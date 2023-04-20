@@ -385,3 +385,19 @@
 
 // console.log(newFunction2()); // => 1
 // console.log(newFunction2()); // => 2
+
+// Stringify
+// Define a function, stringify, that takes a callback function as an argument and returns a new function. When the new function is called, it should invoke the callback function, coerce the value returned into a string, and then return that string.
+
+function stringify(callback) {
+  return function () {
+    return callback().toString();
+  };
+}
+
+function returnsANumber() {
+  return 100;
+}
+
+let newFunction = stringify(returnsANumber);
+console.log(newFunction()); // => '100'
