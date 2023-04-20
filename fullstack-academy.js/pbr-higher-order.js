@@ -268,25 +268,120 @@
 //update the starting value;
 //return starting value;
 
-function chainReaction(startingValue, arrOfFunctions) {
-  for (let i = 0; i < arrOfFunctions.length; i++) {
-    let currentFunction = arrOfFunctions[i];
-    startingValue = currentFunction(startingValue);
-  }
-  return startingValue;
-}
+// function chainReaction(startingValue, arrOfFunctions) {
+//   for (let i = 0; i < arrOfFunctions.length; i++) {
+//     let currentFunction = arrOfFunctions[i];
+//     startingValue = currentFunction(startingValue);
+//   }
+//   return startingValue;
+// }
 
-function addTen(num) {
-  return num + 10;
-}
+// function addTen(num) {
+//   return num + 10;
+// }
 
-function subtractFive(num) {
-  return num - 5;
-}
+// function subtractFive(num) {
+//   return num - 5;
+// }
 
-function multiplyFive(num) {
-  return num * 5;
-}
+// function multiplyFive(num) {
+//   return num * 5;
+// }
 
-console.log(chainReaction(0, [addTen, subtractFive, multiplyFive])); // => 25
-console.log(chainReaction(0, [subtractFive, multiplyFive, addTen])); // => -15
+// console.log(chainReaction(0, [addTen, subtractFive, multiplyFive])); // => 25
+// console.log(chainReaction(0, [subtractFive, multiplyFive, addTen])); // => -15
+
+// function biller(state){
+//     if (state === 'NY') return newYorkBiller;
+// };
+
+// function newYorkBiller(price){
+//     return (price * 1.03 * 1.04);
+// };
+
+// function billerBuilder(state) {
+//   if (state === "NY") {
+//     return function (price) {
+//       return price * 1.03 * 1.04;
+//     };
+//   };
+//   return function (price) {
+//     return price * 1.05 * 1.06625;
+//   };
+// };
+
+// //Closure
+// function billerBuilder(state) {
+//     return function(price) {
+//       if (state === 'NY') {
+//         return price * 1.03 * 1.04;
+//       } else if (state === 'NJ') {
+//         return price * 1.05 * 1.06625;
+//       } else {
+//         throw new Error('Unsupported state');
+//       }
+//     };
+//   }
+
+// let newYorkBiller = billerBuilder("NY");
+// console.log(newYorkBiller(100)); // => 107.12 (100 * 1.03 * 1.04)
+
+// let newJerseyBiller = billerBuilder("NJ");
+// console.log(newJerseyBiller(100)); // => 111.95625 (100 * 1.05 * 1.06625)
+
+// Times Table
+// Define a function timesTable that accepts a number as an argument.
+
+// timesTable should generate a 'times table' function for any number passed in. The generated function should accept a number as an argument and return a function that itself returns the product of that number and any number passed in.
+
+// function timesTable(num1){
+//     return function(num2){
+//         return num1 * num2;
+//     };
+// };
+
+// let ninesTable = timesTable(9);
+// console.log(ninesTable(8)) // => 72
+
+// let twelvesTable = timesTable(12);
+// console.log(twelvesTable(100)) // => 1200
+
+// Partial
+// Write a function, partial, that accepts a callback function and another value (let's call it argA) as arguments. partial should return a new function. When invoked, the new function will:
+
+// Accept its own argument (let's call it argB)
+// Call the callback, passing in argA as the first argument and argB as the second argument
+// Return the value returned by the callback
+
+// function partial(callback, argA){
+//     return function(argB){
+//         return callback(argA, argB)
+//     };
+// };
+
+// function summer (a, b) {
+//   return a + b
+// };
+
+// let sumFive = partial(summer, 5);
+// console.log(sumFive(10)) // => 15;
+
+// Call Count
+// Write a function, callCount, that returns a new function. The new function should return the number of times its been called.
+
+// function callCount() {
+//   let count = 1;
+//   return function () {
+//     return count++;
+//   };
+// };
+
+// let newFunction1 = callCount();
+// let newFunction2 = callCount();
+
+// console.log(newFunction1()); // => 1
+// console.log(newFunction1()); // => 2
+// console.log(newFunction1()); // => 2
+
+// console.log(newFunction2()); // => 1
+// console.log(newFunction2()); // => 2
