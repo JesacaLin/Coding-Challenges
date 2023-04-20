@@ -21,22 +21,38 @@
 
 // NOTE: As with the last problem, the tests will check how many times console.log is called.
 
-function backwardString(string) {
-  //base case? string.length is 1, console.log(last letter)
-  if (string.length === 1) {
-    console.log(string[0]);
-  } else {
-    //recursive case - log the current letter and call the function with the new string
-    const currentLetter = string[string.length - 1];
-    console.log(currentLetter);
-    const newString = string.substring(0, string.length - 1);
-    return backwardString(newString);
-  }
-}
+// function backwardString(string) {
+//   //base case? string.length is 1, console.log(last letter)
+//   if (string.length === 1) {
+//     console.log(string[0]);
+//   } else {
+//     //recursive case - log the current letter and call the function with the new string
+//     const currentLetter = string[string.length - 1];
+//     console.log(currentLetter);
+//     const newString = string.substring(0, string.length - 1);
+//     return backwardString(newString);
+//   }
+// }
 
-backwardString("happy");
-// y
+// backwardString("happy");
+// // y
 // p
 // p
 // a
 // h
+
+// Sum Nums
+// Write a function, sumNums, that takes a number, num, as an argument and returns the sum of all the numbers between 1 and num. You can assume that num will be greater than 1. Use recursion.
+
+// function sumNums(num){
+//     //base case
+//     if(num === 1){
+//         return 1;
+//     };
+
+//     let sum = num + sumNums(num - 1);
+//     return sum;
+
+// };
+
+// console.log(sumNums(3)); // => 6 (3 + 2 + 1)
