@@ -56,3 +56,38 @@
 // };
 
 // console.log(sumNums(3)); // => 6 (3 + 2 + 1)
+
+// Count Vowels
+// Write a function, countVowels, that accepts a string as an argument and returns the number of vowels in that string. Use recursion.
+
+function countVowels(str) {
+  //base case - str.length is 0?
+  if (str.length === 0) {
+    return 0;
+  }
+
+  let counter = 0;
+
+  if (isVowel(str[0])) {
+    counter += 1;
+  }
+  //0
+  //1
+  //2
+
+  counter += countVowels(str.slice(1));
+  //0 = countVowels('our');
+  //1 = countVowels('ur');
+  //2 = countVowels('r');
+
+  return counter;
+}
+
+function isVowel(char) {
+  if ("aeiou".includes(char)) return true;
+  return false;
+}
+
+console.log(countVowels("Four")); // => 2
+console.log(countVowels("Four score")); // => 4
+console.log(countVowels("Four score and seven years")); // => 9
