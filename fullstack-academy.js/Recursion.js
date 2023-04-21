@@ -60,34 +60,65 @@
 // Count Vowels
 // Write a function, countVowels, that accepts a string as an argument and returns the number of vowels in that string. Use recursion.
 
-function countVowels(str) {
-  //base case - str.length is 0?
-  if (str.length === 0) {
-    return 0;
-  }
+// function countVowels(str) {
+//   //base case - str.length is 0?
+//   if (str.length === 0) {
+//     return 0;
+//   }
 
-  let counter = 0;
+//   let counter = 0;
 
-  if (isVowel(str[0])) {
-    counter += 1;
-  }
-  //0
-  //1
-  //2
+//   if (isVowel(str[0])) {
+//     counter += 1;
+//   }
+//   //0
+//   //1
+//   //2
 
-  counter += countVowels(str.slice(1));
-  //0 = countVowels('our');
-  //1 = countVowels('ur');
-  //2 = countVowels('r');
+//   counter += countVowels(str.slice(1));
+//   //0 = countVowels('our');
+//   //1 = countVowels('ur');
+//   //2 = countVowels('r');
 
-  return counter;
-}
+//   return counter;
+// }
 
-function isVowel(char) {
-  if ("aeiou".includes(char)) return true;
-  return false;
-}
+// function isVowel(char) {
+//   if ("aeiou".includes(char)) return true;
+//   return false;
+// }
 
-console.log(countVowels("Four")); // => 2
-console.log(countVowels("Four score")); // => 4
-console.log(countVowels("Four score and seven years")); // => 9
+// console.log(countVowels("Four")); // => 2
+// console.log(countVowels("Four score")); // => 4
+// console.log(countVowels("Four score and seven years")); // => 9
+
+// Reverse Array
+// Write a function, reverseArray, that accepts an array as an argument and returns a reversed copy of that array. Use recursion.
+
+// let arr = [1, 2, 3, 4];
+
+// function reverseArray(arr) {
+//   //base case:
+//   if (arr.length === 0) {
+//     return arr.slice();
+//   }
+
+//   let newArray = [];
+//   //recursive case
+//   //pop the element, push to newArray;
+//   //calls the array again with the one less element that was popped!
+
+//   const lastElement = arr.at(-1);
+//   newArray.push(lastElement);
+
+//   let reversedRemainingElements = reverseArray(arr.slice(0, -1));
+
+//   newArray = newArray.concat(reversedRemainingElements);
+
+//   return newArray;
+// }
+
+// let reversedArr = reverseArray(arr);
+
+// console.log(reversedArr); // [4,3,2,1]
+// console.log(arr); // [1,2,3,4]
