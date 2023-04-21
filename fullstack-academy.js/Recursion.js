@@ -122,3 +122,20 @@
 
 // console.log(reversedArr); // [4,3,2,1]
 // console.log(arr); // [1,2,3,4]
+
+// Sum Digits
+// Write a function, sumDigits, that sums up all the digits of a number passed in as an argument. You can assume that the argument will be a positive integer. Use recursion.
+
+// function sumDigits(num) {
+//   const numString = num.toString();
+//   //base case
+//   if (numString.length === 0) {
+//     return 0;
+//   };
+//   //recursive case
+//   const firstElement = +numString[0];
+//   const remainingString = numString.slice(1);
+//   return firstElement + sumDigits(remainingString);
+// };
+
+// console.log(sumDigits(1234)); // => 10
