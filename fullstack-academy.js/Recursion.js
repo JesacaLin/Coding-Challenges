@@ -150,19 +150,68 @@
 //use shift and pop to remove the compared elements. Might not need this if I'm decreasing the index on each call instead.
 //or slice b/c it doesn't mutate the array.
 
-function isPalindrome(str) {
-  str = str.toLowerCase();
+// function isPalindrome(str) {
+//   str = str.toLowerCase();
 
-  //base case
-  if (str.length < 2) return true;
-  else {
-    //recursive case
-    if (str[0] !== str[str.length - 1]) return false;
-    return isPalindrome(str.slice(1, -1));
-  }
-}
+//   //base case
+//   if (str.length < 2) return true;
+//   else {
+//     //recursive case
+//     if (str[0] !== str[str.length - 1]) return false;
+//     return isPalindrome(str.slice(1, -1));
+//   }
+// }
 
-console.log(isPalindrome("Kayak")); // => true
-console.log(isPalindrome("NEVERODDOREVEN")); // => true
-console.log(isPalindrome("Tacocat")); // => true
-console.log(isPalindrome("SELFLESS")); // => false
+// console.log(isPalindrome("Kayak")); // => true
+// console.log(isPalindrome("NEVERODDOREVEN")); // => true
+// console.log(isPalindrome("Tacocat")); // => true
+// console.log(isPalindrome("SELFLESS")); // => false
+
+// const arraySum =(arr) =>{
+//     let sum = 0;
+//     for(let i = 0; i < arr.length; i++){
+//         const element = arr[i]
+//         if(Array.isArray(element)){
+//             sum += arraySum(element);
+//             // continue;
+//         } else {
+//             sum += element;
+//         }
+
+//     }
+//     return sum;
+// }
+
+// console.log(arraySum([1, [2, 3, [4]]])) // => 10
+// console.log(arraySum([1, [2, 3]])) // => 10
+
+// function concatEls(array){
+//     let finalString = '';
+//     for(let i = 0; i < array.length; i++){
+//         let element = array[i];
+//         if(Array.isArray(element)){
+//             finalString += concatEls(element);
+//         } else{
+//             finalString += element;
+//         };
+//     };
+//     return finalString;
+// };
+
+// let result = concatEls(['a', ['b', 'c', ['e']]]);
+// console.log(result);
+
+// function sumVals(obj){
+//     let sum = 0;
+//     for(let key in obj){
+//         let value = obj[key];
+//         if (typeof value === 'object'){
+//             sum += sumVals (value);
+//         } else{
+//             sum += value;
+//         }
+//     }
+//     return sum;
+// }
+
+// console.log(sumVals({a: 1, b: {c: {d: {e:2, f: 3}}}}));
