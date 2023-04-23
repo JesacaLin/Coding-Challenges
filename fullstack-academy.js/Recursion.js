@@ -139,3 +139,30 @@
 // };
 
 // console.log(sumDigits(1234)); // => 10
+
+// Is Palindrome
+// A palindrome is a word that is spelled the same forwards and backwards. For example, "LEVEL", "RACECAR", and "KAYAK" are all palindromes, while "MOTOR", "RUDDER", and "DOGGED" are not palidromes.
+
+// Write a recursive function, isPalindrome, to check if a string is a palindrome. Return true if the string is a palindrome; otherwise, return false.
+
+//base case? string length is 1 or less?? if length is 1, returns true.
+//recursive case? comparing first and last letter on each recursive call. moving closer to base case.
+//use shift and pop to remove the compared elements. Might not need this if I'm decreasing the index on each call instead.
+//or slice b/c it doesn't mutate the array.
+
+function isPalindrome(str) {
+  str = str.toLowerCase();
+
+  //base case
+  if (str.length < 2) return true;
+  else {
+    //recursive case
+    if (str[0] !== str[str.length - 1]) return false;
+    return isPalindrome(str.slice(1, -1));
+  }
+}
+
+console.log(isPalindrome("Kayak")); // => true
+console.log(isPalindrome("NEVERODDOREVEN")); // => true
+console.log(isPalindrome("Tacocat")); // => true
+console.log(isPalindrome("SELFLESS")); // => false
