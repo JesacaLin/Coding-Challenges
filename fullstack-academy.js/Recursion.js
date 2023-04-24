@@ -366,3 +366,144 @@
 // }
 
 // console.log(getLongestName(family)); // => 'Sir Paddington the Fourth, of the county Wilstonshire'
+
+// Search Party
+// Define a function, searchParty, that accepts 2 arguments:
+// name (string)
+// world (object)
+
+// The keys in world represent a location. The values can be any combination of strings, arrays, or other objects.
+
+// Search through world for name. If name exists in world, return an array with directions. Return null if you can't find name.
+
+//input: name, string. obj
+//name = the object's value
+//output: array
+//array of keys related to the name
+
+//initialize empty array;
+//iterate through the object, probably deconstructing the key and value pairs
+//initialize a variable to store location one key
+//condition check to see if the value is an obj
+//if it is, store the recursive call to the function in a variable, location two.
+//compare string paramater to the variable's value?
+//if there is a match, push location one key and location two to array.
+//else if compare location one's value to the string
+//if match, push location one key to array
+//else return null;
+//return array of locations
+
+let newYorkCity = {
+  Manhattan: {
+    Uptown: {
+      "Washington Heights": "Daniel",
+      UWS: "Cathy",
+    },
+    Midtown: {
+      "Madison Square": "Susan",
+      "Theater District": ["Robert", "Latisha"],
+    },
+    Downtown: {
+      Tribeca: "Billy",
+      "Financial District": {
+        Fullstack: {
+          "11th floor": ["David", "Nimit"],
+          "25th floor": "Ashi",
+        },
+      },
+    },
+  },
+  Brooklyn: {
+    Bushwick: "Marilyn",
+    "Bed-Stuy": ["Juan", "Denice"],
+  },
+  Queens: {
+    Astoria: "Ella",
+    Flushing: "Eric",
+  },
+  Bronx: {
+    Fordham: "Aaron",
+    Melrose: "Krysten",
+  },
+  "Staten Island": {
+    Arlington: ["Nadine", "Mose"],
+    "Elm Park": "Arthur",
+  },
+};
+
+function searchParty(name, world) {
+  // loop through the places in the world
+  for (let place in world) {
+    // if there's a person in this place...
+    if (typeof world[place] === "string") {
+      // ...see if it's the person we're looking for
+      let person = world[place];
+
+      // if we found them...
+      if (person === name) {
+        // return an array with the current place in it
+        return [place];
+      }
+    }
+
+    // else, if there's an array of people in this place...
+    else if (Array.isArray(world[place])) {
+      // ...see if the name we're looking for is in the array
+      let people = world[place];
+
+      // if the person we're looking for is in the array...
+      if (people.includes(name)) {
+        // ...return an array with the place in it
+        return [place];
+      }
+    }
+
+    // else, there must be another object in this place
+    else {
+      let nextObject = world[place];
+      let resultFromNextObject = searchParty(name, nextObject);
+
+      // if we found the person in the nextObject...
+      if (resultFromNextObject) {
+        // return a new array, with the current place concated in front of the resultFromNextObject
+        return [place].concat(resultFromNextObject);
+      }
+    }
+  }
+
+  // if we looped through the world and never found the person, return null
+  return null;
+}
+
+console.log(searchParty("Susan", newYorkCity));
+console.log(searchParty("Nimit", newYorkCity));
+console.log(searchParty("John", newYorkCity));
+
+let world = {
+  Fullstack: {
+    "11th floor": "Marge",
+    "25th floor": "Francis",
+  },
+  Subway: ["Jackie", "Grumio"],
+};
+
+// function searchParty (name, worldObject){
+//     const directionsArray = [];
+
+//     for (const [key, value] of Object.entries(worldObject)){
+//         const locationOne = key;
+//         if(typeof value === 'object' && value !== null){
+//             let locationTwo = searchParty(name, value);
+
+//             if(locationTwo !== null && locationTwo.indexOf(name) ){
+//                 directionsArray.push(locationOne, locationTwo)
+//             }
+//         } else if (name === value){
+//             directionsArray.push(locationOne);
+//         }
+//     };
+//     return directionsArray.length ? directionsArray : null;
+// };
+
+console.log(searchParty("Francis", world)); // => ['Fullstack', '25th floor']
+console.log(searchParty("Franco", world)); // => null
