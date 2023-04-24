@@ -173,7 +173,6 @@
 //         const element = arr[i]
 //         if(Array.isArray(element)){
 //             sum += arraySum(element);
-//             // continue;
 //         } else {
 //             sum += element;
 //         }
@@ -215,3 +214,155 @@
 // }
 
 // console.log(sumVals({a: 1, b: {c: {d: {e:2, f: 3}}}}));
+
+// All Systems Go
+// You are working for NASA because you are super cool! It's up to you to write the code that will determine if "all systems are go for launch". Your function will receive a deeply nested object. The keys of the object represent the names of the systems on the spacecraft; the values are true if the system is "go" for launch and false otherwise. Your function should return true only if every system is "go" for launch!
+
+// let systems = {
+//   power: {
+//     batteries: true,
+//     solarCells: true,
+//     generator: true,
+//     fuelCells: true,
+//   },
+//   telecoms: {
+//     antennas: {
+//       highGain: true,
+//       mediumGain: true,
+//       lowGain: true,
+//     },
+//     transmitter: true,
+//     receiver: true,
+//   },
+//   attitudeControl: {
+//     stabilization: {
+//       spin: true,
+//       threeAxis: true,
+//     },
+//   },
+//   propulsion: {
+//     engines: {
+//       engine1: true,
+//       engine2: true,
+//       engine3: false,
+//     },
+//     thrusters: true,
+//     propellant: true,
+//   },
+//   environment: {
+//     cooling: true,
+//     heating: true,
+//     lifeSupport: true,
+//   },
+// };
+
+//iterate through the objects, if nested obj is encountered, it calls itself to interate within the nested obj.
+//once false is encountered, it ends the loop.
+//if the value of a key is 'true', keep going.
+
+// function allSystemsGo(object) {
+//   for (const value of Object.values(object)) {
+//     if (typeof value === "object") {
+//       if (!allSystemsGo(value)) {
+//         return false;
+//       }
+//     } else if (value === false) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// for (let [key, value] of Object.entries(object)){
+//     for(let nestedValue in value){
+//         let nestedInnerValue = value[nestedValue]
+//         if (typeof (nestedInnerValue) === 'object'){
+//             if (!allSystemsGo(nestedInnerValue)){
+//                 return false;
+//             }
+//         };
+//         if (nestedInnerValue === false){
+//             return false;
+//         }
+//     }
+// }
+// return true;
+
+// console.log(allSystemsGo(systems)); // => false
+
+// The Truth Counts
+// Write a function, theTruthCounts, that accepts a multi-dimensional array of values as argument. theTruthCounts should return the count of all truthy values inside the multidimensional array.
+
+//set counter to count the occurances of truthy values
+//iterate through the array;
+//if array type is encountered
+//recursively calls itself
+//add to counter the result of the recursive call.
+//else if element is not an array, evaluates the truthiness...
+//if true, increment the counter
+//return counter;
+
+// function theTruthCounts(arr) {
+//   let counter = 0;
+//   for (const element of arr) {
+//     if (Array.isArray(element)) {
+//       if (theTruthCounts(element)) {
+//         counter += theTruthCounts(element);
+//       }
+//     } else {
+//       if (element) {
+//         counter++;
+//       }
+//     }
+//   }
+//   return counter;
+// }
+// console.log(theTruthCounts([0, [true, ["yes"]]])); // => 2
+
+// Get Longest Name
+// Write a function, getLongestName, that accepts an object as an argument. The object represents a family tree. Return the longest name in the family.
+
+//each key is a name
+//value is the object
+
+//create counter to keep track of string length;
+//create empty string variable
+//iterate through each level of the obj, counting and updating the counter
+//if the value is an obj
+//recursively call the function
+//comparing the current counter to the current nested key
+//update counter and empty string if current nested key is longer
+//if the value is NOT an obj
+//compare current counter to current key
+//update counter and empty string if current key is longer
+//return the string variable;
+
+// let family = {
+//   "Beverly Marquez": {
+//     "Nina Rhone": {
+//       "William Rhodes": null,
+//       "Paul Nell": null,
+//       "Sir Paddington the Fourth, of the county Wilstonshire": null,
+//     },
+//   },
+// };
+
+// function getLongestName(obj) {
+//   let counter = 0;
+//   let longestName = "";
+//   for (const [key, value] of Object.entries(obj)) {
+//     if (typeof value === "object" && value !== null) {
+//       const nestedName = getLongestName(value);
+//       if (nestedName.length > counter) {
+//         counter = nestedName.length;
+//         longestName = nestedName;
+//       }
+//     } else if (key.length > counter) {
+//       counter = key.length;
+//       longestName = key;
+//     }
+//   }
+//   return longestName;
+// }
+
+// console.log(getLongestName(family)); // => 'Sir Paddington the Fourth, of the county Wilstonshire'
