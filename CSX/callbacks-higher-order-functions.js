@@ -342,27 +342,60 @@ LOOK; //CHALLENGE: arrToObj
 //update counter if callback returns true
 //if # true is = to # false, return false
 
-function majority(arr, callback) {
-  let callbackTrue = 0;
-  let callbackFalse = 0;
-  for (const num of arr) {
-    if (callback(num)) {
-      callbackTrue += 1;
+// function majority(arr, callback) {
+//   let callbackTrue = 0;
+//   let callbackFalse = 0;
+//   for (const num of arr) {
+//     if (callback(num)) {
+//       callbackTrue += 1;
+//     } else {
+//       callbackFalse += 1;
+//     }
+//   }
+//   const result = callbackFalse >= callbackTrue ? false : true;
+//   return result;
+// }
+// // Uncomment these to check your work!
+// const isOdd = function (num) {
+//   return num % 2 === 1;
+// };
+// console.log(majority([1, 2, 3, 4, 5], isOdd)); // should log: true
+// console.log(majority([2, 3, 4, 5], isOdd)); // should log: false
+
+// LOOK -->Challenge: prioritize
+//input: array, callback
+//output: array of prioritized elements in the front, rest in the back.
+
+//plan: iterate, pushed element that return true to first array, push false to 2nd array. concat the two arrays.
+
+//initialize new arrays
+//iterate through the array
+//call callback with each element of array
+//if callback is true, push element to first array
+//else push to second array
+//concat the two array
+//return new array.
+
+function prioritize(arr, callback) {
+  const arrPriority = [];
+  const arrRest = [];
+  for (const element of arr) {
+    if (callback(element)) {
+      arrPriority.push(element);
     } else {
-      callbackFalse += 1;
+      arrRest.push(element);
     }
   }
-  const result = callbackFalse >= callbackTrue ? false : true;
-  return result;
+  return arrPriority.concat(arrRest);
 }
-// Uncomment these to check your work!
-const isOdd = function (num) {
-  return num % 2 === 1;
-};
-console.log(majority([1, 2, 3, 4, 5], isOdd)); // should log: true
-console.log(majority([2, 3, 4, 5], isOdd)); // should log: false
 
-// LOOK -->
+// Uncomment these to check your work!
+function startsWithS(str) {
+  return str[0].toLowerCase() === "s";
+}
+const tvShows = ["curb", "rickandmorty", "seinfeld", "sunny", "friends"];
+console.log(prioritize(tvShows, startsWithS)); // should log: ['seinfeld', 'sunny', 'curb', 'rickandmorty', 'friends']
+
 // LOOK -->
 
 // LOOK -->
