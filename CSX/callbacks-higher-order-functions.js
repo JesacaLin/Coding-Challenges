@@ -443,25 +443,58 @@ LOOK; //CHALLENGE: arrToObj
 //check if obj has a key matching store value
 //if yes, assign the element as an element in an array, using concatation to accommadate multiple 		values
 //return obj;
-function groupBy(arr, callback) {
-  const obj = {};
-  for (const element of arr) {
-    const currentValue = callback(element);
-    if (obj[currentValue] === undefined) {
-      obj[currentValue] = [element];
-    } else {
-      obj[currentValue] = obj[currentValue].concat(element);
+// function groupBy(arr, callback) {
+//   const obj = {};
+//   for (const element of arr) {
+//     const currentValue = callback(element);
+//     if (obj[currentValue] === undefined) {
+//       obj[currentValue] = [element];
+//     } else {
+//       obj[currentValue] = obj[currentValue].concat(element);
+//     }
+//   }
+//   return obj;
+// }
+
+// // Uncomment these to check your work!
+// const decimals = [1.3, 2.1, 2.4];
+// const floored = function (num) {
+//   return Math.floor(num);
+// };
+// console.log(groupBy(decimals, floored)); // should log: { 1: [1.3], 2: [2.1, 2.4] }
+
+// LOOK -->goodkeys
+//input: obj, callback
+//output: array of keys
+//plan: iterate through the obj, calling the callback on each value within the obj. store the result of the callback in a variable. if result is true, push the key to an array.
+//declare a function goodKeys
+//initialize an empty array
+//iterate through the obj
+//initialize variable to store value returned from the callback
+//if variable is true, push key to array;
+//return array
+function goodKeys(obj, callback) {
+  const arrayOfKeys = [];
+  for (const key in obj) {
+    const resultOfCallback = callback(obj[key]);
+    if (resultOfCallback === true) {
+      arrayOfKeys.push(key);
     }
   }
-  return obj;
+  return arrayOfKeys;
 }
 
 // Uncomment these to check your work!
-const decimals = [1.3, 2.1, 2.4];
-const floored = function (num) {
-  return Math.floor(num);
+const sunny = {
+  mac: "priest",
+  dennis: "calculator",
+  charlie: "birdlaw",
+  dee: "bird",
+  frank: "warthog",
 };
-console.log(groupBy(decimals, floored)); // should log: { 1: [1.3], 2: [2.1, 2.4] }
+function startsWithBird(str) {
+  return str.slice(0, 4).toLowerCase() === "bird";
+}
+console.log(goodKeys(sunny, startsWithBird)); // should log: ['charlie', 'dee']
 
-// LOOK -->
 // LOOK -->
