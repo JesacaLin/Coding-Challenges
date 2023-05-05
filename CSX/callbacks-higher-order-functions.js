@@ -410,27 +410,58 @@ LOOK; //CHALLENGE: arrToObj
 //if yes, update the key's value by one.
 //return obj;
 
-function countBy(arr, callback) {
+// function countBy(arr, callback) {
+//   const obj = {};
+//   for (const element of arr) {
+//     let returnValue = callback(element);
+//     if (obj[returnValue] === undefined) {
+//       obj[returnValue] = 1;
+//     } else {
+//       obj[returnValue]++;
+//     }
+//   }
+//   return obj;
+// }
+
+// // Uncomment these to check your work!
+// function evenOdd(n) {
+//   if (n % 2 === 0) return "even";
+//   else return "odd";
+// }
+// const nums = [1, 2, 3, 4, 5];
+// console.log(countBy(nums, evenOdd)); // should log: { odd: 3, even: 2 }
+
+// LOOK -->groupBy
+
+//input: array, callback
+//output: obj
+//plan: iterate through array, calling callback on each element. result of each callback will be used as keys in the object. the value is the element that produced the key.
+
+//initialize an empty obj
+//iterate through the array
+//store value of callback on each element of the array
+//check if obj has a key matching store value
+//if yes, assign the element as an element in an array, using concatation to accommadate multiple 		values
+//return obj;
+function groupBy(arr, callback) {
   const obj = {};
   for (const element of arr) {
-    let returnValue = callback(element);
-    if (obj[returnValue] === undefined) {
-      obj[returnValue] = 1;
+    const currentValue = callback(element);
+    if (obj[currentValue] === undefined) {
+      obj[currentValue] = [element];
     } else {
-      obj[returnValue]++;
+      obj[currentValue] = obj[currentValue].concat(element);
     }
   }
   return obj;
 }
 
 // Uncomment these to check your work!
-function evenOdd(n) {
-  if (n % 2 === 0) return "even";
-  else return "odd";
-}
-const nums = [1, 2, 3, 4, 5];
-console.log(countBy(nums, evenOdd)); // should log: { odd: 3, even: 2 }
+const decimals = [1.3, 2.1, 2.4];
+const floored = function (num) {
+  return Math.floor(num);
+};
+console.log(groupBy(decimals, floored)); // should log: { 1: [1.3], 2: [2.1, 2.4] }
 
-// LOOK -->
 // LOOK -->
 // LOOK -->
