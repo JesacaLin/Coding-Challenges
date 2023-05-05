@@ -376,27 +376,60 @@ LOOK; //CHALLENGE: arrToObj
 //concat the two array
 //return new array.
 
-function prioritize(arr, callback) {
-  const arrPriority = [];
-  const arrRest = [];
+// function prioritize(arr, callback) {
+//   const arrPriority = [];
+//   const arrRest = [];
+//   for (const element of arr) {
+//     if (callback(element)) {
+//       arrPriority.push(element);
+//     } else {
+//       arrRest.push(element);
+//     }
+//   }
+//   return arrPriority.concat(arrRest);
+// }
+
+// // Uncomment these to check your work!
+// function startsWithS(str) {
+//   return str[0].toLowerCase() === "s";
+// }
+// const tvShows = ["curb", "rickandmorty", "seinfeld", "sunny", "friends"];
+// console.log(prioritize(tvShows, startsWithS)); // should log: ['seinfeld', 'sunny', 'curb', 'rickandmorty', 'friends']
+
+// LOOK -->countBy
+
+//input: array, callback
+//output: an object of occurances
+
+//plan: iterate, keep track of how many times a certain value is returned inside an object's key value pairs.
+
+//initialize an empty object
+//iterate through the array
+//store return value of callback on each element in a variable
+//check to see if return value matches any of the keys
+//if yes, update the key's value by one.
+//return obj;
+
+function countBy(arr, callback) {
+  const obj = {};
   for (const element of arr) {
-    if (callback(element)) {
-      arrPriority.push(element);
+    let returnValue = callback(element);
+    if (obj[returnValue] === undefined) {
+      obj[returnValue] = 1;
     } else {
-      arrRest.push(element);
+      obj[returnValue]++;
     }
   }
-  return arrPriority.concat(arrRest);
+  return obj;
 }
 
 // Uncomment these to check your work!
-function startsWithS(str) {
-  return str[0].toLowerCase() === "s";
+function evenOdd(n) {
+  if (n % 2 === 0) return "even";
+  else return "odd";
 }
-const tvShows = ["curb", "rickandmorty", "seinfeld", "sunny", "friends"];
-console.log(prioritize(tvShows, startsWithS)); // should log: ['seinfeld', 'sunny', 'curb', 'rickandmorty', 'friends']
-
-// LOOK -->
+const nums = [1, 2, 3, 4, 5];
+console.log(countBy(nums, evenOdd)); // should log: { odd: 3, even: 2 }
 
 // LOOK -->
 // LOOK -->
