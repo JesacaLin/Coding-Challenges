@@ -54,26 +54,57 @@
 //   console.log(mike.age); // -> Logs 30
 //   mike.greet(); // -> Logs 'hello'
 
-function PersonConstructor() {
-  this.greet = function () {
-    console.log("hello");
-  };
+// function PersonConstructor() {
+//   this.greet = function () {
+//     console.log("hello");
+//   };
+// }
+
+// function personFromConstructor(name, age) {
+//   // add code here
+//   const newPerson = new PersonConstructor();
+//   newPerson.name = name;
+//   newPerson.age = age;
+//   return newPerson;
+// }
+
+// const mike = personFromConstructor("Mike", 30);
+
+// // Uncomment these lines to check your work!
+// console.log(mike.name); // -> Logs 'Mike'
+// console.log(mike.age); // -> Logs 30
+// mike.greet(); // -> Logs 'hello'
+
+//-->Dog Constructor
+
+function Dog(name, breed) {
+  this.name = name;
+  this.breed = breed;
+  this.tricks = [];
 }
 
-function personFromConstructor(name, age) {
-  // add code here
-  const newPerson = new PersonConstructor();
-  newPerson.name = name;
-  newPerson.age = age;
-  return newPerson;
-}
+Dog.prototype.learnTrick = function (string) {
+  this.tricks.push(string);
+};
+Dog.prototype.performTrick = function (string) {
+  //iterate through tricks array
+  //if string is there, log 'name performed trick!'
+  //if string is not there, log 'name doesn't know that trick
+  for (const trick of this.tricks) {
+    if (trick === string) {
+      console.log(`${this.name} performed ${trick}!`);
+    } else {
+      console.log(`${this.name} doesn't know that trick.`);
+    }
+  }
+};
 
-const mike = personFromConstructor("Mike", 30);
+const fido = new Dog("Fido", "poodle");
 
 // Uncomment these lines to check your work!
-console.log(mike.name); // -> Logs 'Mike'
-console.log(mike.age); // -> Logs 30
-mike.greet(); // -> Logs 'hello'
+fido.learnTrick("fetch");
+fido.performTrick("fetch"); // should log 'Fido performed fetch!'
+fido.performTrick("sit"); // should log 'Fido doesn't know that trick.'
 
 //-->MAKE PERSON
 
