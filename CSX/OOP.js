@@ -1,24 +1,36 @@
 //introduce
-const personStore = {
-  greet: function () {
-    console.log("hello");
-  },
-  introduce: function () {
-    console.log(`Hi, my name is ${this.name}`);
-  },
-};
+// const personStore = {
+//   greet: function () {
+//     console.log("hello");
+//   },
+//   introduce: function () {
+//     console.log(`Hi, my name is ${this.name}`);
+//   },
+// };
 
-function personFromPersonStore(name, age) {
-  const person = Object.create(personStore);
-  person.name = name;
-  person.age = age;
-  return person;
-}
+// function personFromPersonStore(name, age) {
+//   const person = Object.create(personStore);
+//   person.name = name;
+//   person.age = age;
+//   return person;
+// }
 
-const sandra = personFromPersonStore("Sandra", 26);
+// const sandra = personFromPersonStore("Sandra", 26);
 
-// Uncomment this line to check your work!
-sandra.introduce(); // -> Logs 'Hi, my name is Sandra'
+// // Uncomment this line to check your work!
+// sandra.introduce(); // -> Logs 'Hi, my name is Sandra'
+
+//PersonConstructor
+// function PersonConstructor() {
+// 	this.greet = function(){
+//     console.log('hello')
+//   }
+// }
+
+// const simon = new PersonConstructor();
+
+// // Uncomment this line to check your work!
+// simon.greet(); // -> Logs 'hello'
 
 //-->MAKE PERSON
 
