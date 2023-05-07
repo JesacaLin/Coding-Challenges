@@ -32,6 +32,49 @@
 // // Uncomment this line to check your work!
 // simon.greet(); // -> Logs 'hello'
 
+//-->personfromConstructor
+
+// function PersonConstructor() {
+//     this.greet = function() {
+//       console.log('hello');
+//     }
+//   }
+
+//   function personFromConstructor(name, age) {
+//       // add code here
+//     const newPerson = new PersonConstructor()
+//       Object.assign(newPerson, {name, age})
+//       return newPerson
+//   }
+
+//   const mike = personFromConstructor('Mike', 30);
+
+//   // Uncomment these lines to check your work!
+//   console.log(mike.name); // -> Logs 'Mike'
+//   console.log(mike.age); // -> Logs 30
+//   mike.greet(); // -> Logs 'hello'
+
+function PersonConstructor() {
+  this.greet = function () {
+    console.log("hello");
+  };
+}
+
+function personFromConstructor(name, age) {
+  // add code here
+  const newPerson = new PersonConstructor();
+  newPerson.name = name;
+  newPerson.age = age;
+  return newPerson;
+}
+
+const mike = personFromConstructor("Mike", 30);
+
+// Uncomment these lines to check your work!
+console.log(mike.name); // -> Logs 'Mike'
+console.log(mike.age); // -> Logs 30
+mike.greet(); // -> Logs 'hello'
+
 //-->MAKE PERSON
 
 // function makePerson(name, age) {
